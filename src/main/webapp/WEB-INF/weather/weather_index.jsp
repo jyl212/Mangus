@@ -8,27 +8,48 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
-
-
+<style>
+	#parent{
+		position:relative;
+	}
+	#child{
+		position:absolute;
+		top:0;
+		margin-top:10%;
+		margin-left:30%;
+		left:0;
+		color:white;
+		font-weight:900;
+	}
+	h1{
+		font-weight:900;
+		font-size:55px;
+	}
+</style>
 </head>
 <body>
 	<div class="section">
 		<div class="container">
 			<div class="row" style="margin: 30px;">
-				<div class="col-md-12">
-					<img src="/springProject/resources/weather/background.jpg" style="width:100%;height:30%;opacity:0.7; position:relative;z-index:1;"/>
-					<div class="row">
-						<div class="col-md-6">
+				<div class="col-md-12" id="parent">
+					<img src="/springProject/resources/weather/background.jpg" style="width:100%;height:30%;opacity:0.9;"/>
+					<div class="row" id="child">
+						<div class="col-md-4">
 							<img src="/springProject/resources/weather/${today.img}"
-								style="width: 200px; height: 200px; left: 70px;top:-100px;left:0px; position:absolute;z-index:2">
+								style="width: 150px; height: 150px;opacity:0.8;">
 						</div>
-						<div class="col-md-6" style="padding: 60px;">
-							<h3>${today.sky.name}</h3>
-							<h4>현재 기온 : ${today.temperature.tc}</h4>
-							<h4>최저/최고 기온 :
-								${today.temperature.tmax}/${today.temperature.tmin}</h4>
-							<h4>풍속 : ${today.wind.wspd}m/s</h4>
+						<div class="col-md-8">
+							<div class="row" style="text-align:center;">
+								<div class="col-md-6"><h1>${today.sky.name}</h1></div>
+								<div class="col-md-6"><h1>${fn:split(today.temperature.tc,'.')[0]}º</h1></div>
+							</div>
+							<div class="row">
+								<div class="col-md-6" style="text-align:center;"><h3>
+									${fn:split(today.temperature.tmax,'.')[0]}º/${fn:split(today.temperature.tmin,'.')[0]}º</h3></div>
+								<div class="col-md-6"><img src="/springProject/resources/weather/wind_speed.png" style="width:10px;height:10px;">
+								<h3>${today.wind.wspd}m/s</h3></div>
+							</div>
+							</div>
 						</div>
 					</div>
 					<div class="row">
