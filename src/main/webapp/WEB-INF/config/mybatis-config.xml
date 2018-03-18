@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<typeAliases>
+		<typeAlias type="member.MemberVO" alias="member" />
+		<typeAlias type="alarm.AlarmVO" alias="alarm" />
+		<typeAlias type="mail.MailVO2" alias="mail"/>
+		<typeAlias type="sms.GroupVO" alias="group"/>
+		<typeAlias type="sms.PhoneVO" alias="phone"/>
+	</typeAliases>
+	<mappers>
+		<mapper resource="mapper/member.xml" />
+		<mapper resource="mapper/alarm.xml" />
+		<mapper resource="mapper/mail.xml" />
+		<mapper resource="mapper/sms.xml" />
+	</mappers>
+</configuration>

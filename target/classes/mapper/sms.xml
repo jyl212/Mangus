@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+  <mapper namespace="springProject.sms">
+
+<!-- 전체 조회 -->
+ 	<select id="phone_glist" resultType="group" parameterType="String">
+ 		select * from phone_group where id=#{id}
+ 	</select>
+ 	<select id="phone_phone_list" resultType="phone" parameterType="String">
+ 		select pg.title, p.phone, p.name from phonebook p, phone_group pg where p.title_code=pg.title_code and id = #{id} 
+ 	</select>
+ 	
+<!-- 추가 --> 	
+ 	 <insert id="gInsert" parameterType="group">
+ 		insert into phone_group values(title_code_seq.nextval, #{title}, #{id})
+ 	</insert>
+ 	<insert id="pInsert" parameterType="phone">
+ 		insert into phonebook values(#{phone}, #{name}, #{title_code})
+ 	</insert>
+ 
+ <!-- 삭제 -->
+ 	<delete id="gDelete">
+ 		delete from phone_group where title_code = #{title_code} cascade;
+ 	</delete>
+ 	<delete id="pDelete">
+ 		delete from phonebook where phone = #{phone}
+ 	</delete>
+
+ </mapper>

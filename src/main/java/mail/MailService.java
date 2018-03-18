@@ -1,0 +1,12 @@
+package mail;
+
+import java.util.List;
+
+public interface MailService{
+	int send(MailVO2 data);
+	List<MailVO2> list(String id);
+	int delete(String seq);
+	int update(String seq);
+	String getCount(String id);
+	String getread(String seq);
+}

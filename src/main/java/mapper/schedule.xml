@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="springProject.schedule">
+ 	<insert id="insert" parameterType="String">
+ 		insert into schedule values(schedule_seq.nextval,#{schedule_date},#{id},#{schedule_title},#{schedule_location},#{schedule_memo},#{alarm_flag})
+ 	</insert>
+ </mapper>

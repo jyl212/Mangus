@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+<tiles-definitions>
+	<!-- 메인화면 레이아웃 -->
+	<definition name="mainTemplate" template="/WEB-INF/layout/mainLayout.jsp">
+		<put-attribute name="top" value="/WEB-INF/layout/top.jsp" />
+		<put-attribute name="content" value="/WEB-INF/layout/content.jsp" />
+	</definition>
+	<definition name="index" extends="mainTemplate">
+	</definition>
+
+	<!-- 날씨화면 레이아웃 -->
+	<definition name="weather" extends="mainTemplate">
+		<put-attribute name="content" value="/WEB-INF/weather/weather_index.jsp" />
+	</definition>
+	<!-- SMS화면 레이아웃 -->
+	<definition name="sms" extends="mainTemplate">
+		<put-attribute name="content" value="/WEB-INF/sms/sms_index.jsp" />
+	</definition>
+	<!-- 음악화면 레이아웃 -->
+	<definition name="music" extends="mainTemplate">
+		<put-attribute name="content" value="/WEB-INF/music/music_index.jsp" />
+	</definition>
+
+	<!-- 검색화면 레이아웃 -->
+	<definition name="search" extends="mainTemplate">
+		<put-attribute name="content" value="/WEB-INF/search/search_index.jsp" />
+	</definition>
+	<!-- 교통관련 레이아웃 -->
+	<definition name="traffic" extends="mainTemplate">
+		<put-attribute name="content" value="/WEB-INF/traffic/traffic_index.jsp" />
+	</definition>
+	<!-- 스케줄관련 레이아웃 -->
+	<definition name="schedule" extends="mainTemplate">
+		<put-attribute name="content" value="/WEB-INF/schedule/schedule_index.jsp" />
+	</definition>
+	<definition name="schedule/insert" extends="mainTemplate">
+		<put-attribute name="content" value="/WEB-INF/schedule/schedule_insert.jsp" />
+	</definition>
+	<!-- 메일화면 레이아웃 -->
+	<definition name="mail" extends="mainTemplate">
+      <put-attribute name="content" value="/WEB-INF/mail/write.jsp" />
+   </definition>
+	<definition name="mail/mailOk" extends="mainTemplate">
+		<put-attribute name="content" value="/WEB-INF/mail/sendOk.jsp" />
+	</definition>
+	<definition name="mail/mailFail" extends="mainTemplate">
+		<put-attribute name="content" value="/WEB-INF/mail/sendFail.jsp" />
+	</definition>
+	<definition name="mail/deleteFail" extends="mainTemplate">
+		<put-attribute name="content" value="/WEB-INF/mail/deleteFail.jsp" />
+	</definition>
+	<definition name="mail/sendlist" extends="mainTemplate">
+		<put-attribute name="content" value="/WEB-INF/mail/list.jsp" />
+	</definition>
+
+	<!-- 회원가입 레이아웃 -->
+	<definition name="/member/signup" extends="mainTemplate">
+		<put-attribute name="content" value="/WEB-INF/member/signup.jsp" />
+	</definition>
+	<definition name="/member/joinOk" extends="mainTemplate">
+		<put-attribute name="content" value="/WEB-INF/member/joinOk.jsp" />
+	</definition>
+
+	<!-- 로그인 레이아웃 -->
+	<definition name="/member/login" extends="mainTemplate">
+		<put-attribute name="content" value="/WEB-INF/member/login.jsp" />
+	</definition>
+	<!-- 알람 레이아웃 -->
+	<definition name="alarm/index" extends="mainTemplate">
+		<put-attribute name="content" value="/WEB-INF/alarm/alarm_index.jsp" />
+	</definition>
+</tiles-definitions>
