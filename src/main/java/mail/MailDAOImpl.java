@@ -1,7 +1,10 @@
 package mail;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
@@ -33,6 +36,10 @@ public class MailDAOImpl implements MailDAO{
 		Map<String,String> data=new HashMap<String,String>();
 		data.put("seq",seq);
 		data.put("read","Y");
+		SimpleDateFormat formatter = new SimpleDateFormat ( "yyyy-MM-dd HH:mm:ss", Locale.KOREA ); 
+		Date currentTime = new Date ( ); 
+		String dTime = formatter.format ( currentTime ); 
+		data.put("date",dTime);
 		return session.update("springProject.mail.update",data);
 	}
 

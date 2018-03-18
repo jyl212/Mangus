@@ -17,10 +17,11 @@
 		<div class="container">
 			<div class="row" style="margin: 30px;">
 				<div class="col-md-12">
+					<img src="/springProject/resources/weather/background.jpg" style="width:100%;height:30%;opacity:0.7; position:relative;z-index:1;"/>
 					<div class="row">
 						<div class="col-md-6">
 							<img src="/springProject/resources/weather/${today.img}"
-								style="width: 300px; height: 300px; left: 70px;">
+								style="width: 200px; height: 200px; left: 70px;top:-100px;left:0px; position:absolute;z-index:2">
 						</div>
 						<div class="col-md-6" style="padding: 60px;">
 							<h3>${today.sky.name}</h3>

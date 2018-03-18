@@ -12,7 +12,7 @@
  		delete send_mail where mail_seq=#{mail_seq}
  	</delete>
  	<update id="update" parameterType="Map">
- 		update send_mail set read=#{read},read_date=sysdate where mail_seq=#{seq}
+ 		update send_mail set read=#{read},read_date=#{date} where mail_seq=#{seq}
  	</update>
  	<select id="count" parameterType="String" resultType="String">
  		select count(*) from send_mail where id=#{id}
