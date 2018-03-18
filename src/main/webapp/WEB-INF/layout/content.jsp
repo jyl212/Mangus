@@ -8,19 +8,37 @@
 <title>My PA</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
+<style type="text/css">
+	#parent{
+		position:relative;
+	}
+	#child{
+		position:absolute;
+		top:10%;
+		margin-top:10%;
+		margin-left:30%;
+		left:0;
+		color:white;
+		font-weight:900;
+	}
+</style>
 </head>
 <body>
 	<div class="section">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-6">
-					<h1>날씨</h1>
-					<img src="/springProject/resources/weather/${today.img}" style="width:300px;height:300px;left:70px;">
-					<h4>${today.sky.name}</h4>
-					<h4>현재 기온 : ${today.temperature.tc}</h4>
-					<h4>최고/최저 기온 : ${today.temperature.tmax}/${today.temperature.tmin}</h4>
-					<h4>풍속 : ${today.wind.wspd}m/s</h4>
+				<h1>날씨</h1>
+					<div id="parent">
+						<img src="/springProject/resources/weather/background.jpg" style="width:100%;height:500px;opacity:0.7;"/>
+					</div>
+					<div id="child">
+						<img src="/springProject/resources/weather/${today.img}" style="width:300px;height:300px;left:70px;">
+						<h4>${today.sky.name}</h4>
+						<h4>현재 기온 : ${today.temperature.tc}</h4>
+						<h4>최고/최저 기온 : ${today.temperature.tmax}/${today.temperature.tmin}</h4>
+						<h4>풍속 : ${today.wind.wspd}m/s</h4>
+					</div>
 					<div class="row"></div>
 				</div>
 				<div class="col-md-6">

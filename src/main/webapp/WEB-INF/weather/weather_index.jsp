@@ -15,15 +15,38 @@
 	#child{
 		position:absolute;
 		top:0;
-		margin-top:10%;
+		margin-top:5%;
 		margin-left:30%;
 		left:0;
 		color:white;
 		font-weight:900;
 	}
+	#child2{
+		position:absolute;
+		top:25%;
+		left:15%;
+		color:white;
+		font-weight:900;
+		width:80%;
+	}
+	#child3{
+		position:absolute;
+		top:40%;
+		left:15%;
+		color:white;
+		font-weight:900;
+		width:80%;
+	}
 	h1{
 		font-weight:900;
 		font-size:55px;
+	}
+	h4{
+		font-weight:900px;
+	}
+	h5{
+		font-size:15px;
+		font-weight:900px;
 	}
 </style>
 </head>
@@ -32,7 +55,7 @@
 		<div class="container">
 			<div class="row" style="margin: 30px;">
 				<div class="col-md-12" id="parent">
-					<img src="/springProject/resources/weather/background.jpg" style="width:100%;height:30%;opacity:0.9;"/>
+					<img src="/springProject/resources/weather/background.jpg" style="width:100%;height:50%;opacity:0.7;"/>
 					<div class="row" id="child">
 						<div class="col-md-4">
 							<img src="/springProject/resources/weather/${today.img}"
@@ -43,93 +66,86 @@
 								<div class="col-md-6"><h1>${today.sky.name}</h1></div>
 								<div class="col-md-6"><h1>${fn:split(today.temperature.tc,'.')[0]}º</h1></div>
 							</div>
-							<div class="row">
-								<div class="col-md-6" style="text-align:center;"><h3>
+							<div class="row" style="text-align:center;">
+								<div class="col-md-6" ><h3>
 									${fn:split(today.temperature.tmax,'.')[0]}º/${fn:split(today.temperature.tmin,'.')[0]}º</h3></div>
-								<div class="col-md-6"><img src="/springProject/resources/weather/wind_speed.png" style="width:10px;height:10px;">
-								<h3>${today.wind.wspd}m/s</h3></div>
+								<div class="col-md-6"><img src="/springProject/resources/weather/wind_speed.png" style="width:30px;height:30px;float:left;margin-top:18px;">
+								<h3 style="float:left;">${today.wind.wspd}m/s</h3></div>
 							</div>
 							</div>
 						</div>
 					</div>
-					<div class="row">
+					<div class="row" id="child3">
 						<div class="col-md-4">
 							<img src="/springProject/resources/weather/${today.img}"
-								style="width: 200px; height: 200px; left: 220px;">
-							<h3>오늘</h3>
+								style="width: 100px; height: 100px; left: 220px;">
+							<h4>오늘</h4>
 							<h4>${today.sky.name}</h4>
-							<h4>최고/최저 기온 :
-								${today.temperature.tmax}/${today.temperature.tmin}</h4>
-							<h4>풍속 : ${today.wind.wspd}m/s</h4>
+							<h4>${fn:split(today.temperature.tmax,'.')[0]}º/${fn:split(today.temperature.tmin,'.')[0]}º</h4>
+							<h4><img src="/springProject/resources/weather/wind_speed.png" style="width:30px;height:30px;float:left;">${today.wind.wspd}m/s</h4>
 						</div>
 						<div class="col-md-4">
 							<img src="/springProject/resources/weather/${info.imglist[7]}"
-								style="width: 200px; height: 200px; left: 220px;">
-							<h3>내일</h3>
+								style="width: 100px; height: 100px; left: 220px;">
+							<h4>내일</h4>
 							<h4>${info.namelist[7]}</h4>
-							<h4>최고/최저 기온 : ${info.daysmaxtemp[0]}/${info.daysmintemp[0]}</h4>
-							<h4>풍속 : ${info.wspdlist[7]}m/s</h4>
+							<h4>${fn:split(info.daysmaxtemp[0],'.')[0]}º/${fn:split(info.daysmintemp[0],'.')[0]}º</h4>
+							<h4><img src="/springProject/resources/weather/wind_speed.png" style="width:30px;height:30px;float:left;">${info.wspdlist[7]}m/s</h4>
 						</div>
 						<div class="col-md-4">
 							<img src="/springProject/resources/weather/${info.imglist[15]}"
-								style="width: 200px; height: 200px; left: 220px;">
-							<h3>모레</h3>
+								style="width: 100px; height: 100px; left: 220px;">
+							<h4>모레</h4>
 							<h4>${info.namelist[15]}</h4>
-							<h4>최고/최저 기온 : ${info.daysmaxtemp[1]}/${info.daysmintemp[1]}</h4>
-							<h4>풍속 : ${info.wspdlist[15]}m/s</h4>
+							<h4>${fn:split(info.daysmaxtemp[1],'.')[0]}º/${fn:split(info.daysmintemp[1],'.')[0]}º</h4>
+							<h4><img src="/springProject/resources/weather/wind_speed.png" style="width:30px;height:30px;float:left;">${info.wspdlist[15]}m/s</h4>
 						</div>
 					</div>
 					<div class="row"></div>
 				</div>
 			</div>
-			<div class="row" style="margin: 30px;">
+			<div class="row" style="margin-top:30px;" id="child2">
 				<div class="col-md-2">
 					<h4>3시간 후</h4>
 					<img src="/springProject/resources/weather/${info.imglist[0]}"
-						style="width: 50px; height: 50px; left: 30px;">
-					<h4>${info.namelist[0]}</h4>
-					<h4>${info.templist[0]}</h4>
-					<h4>${info.wspdlist[0]}m/s</h4>
+						style="width: 30px; height: 30px; left: 30px;">
+					<h5>${info.namelist[0]}</h5>
+					<h5>${fn:split(info.templist[0],'.')[0]}º / ${info.wspdlist[0]}m/s</h5>
 				</div>
 				<div class="col-md-2">
 					<h4>6시간 후</h4>
 					<img src="/springProject/resources/weather/${info.imglist[1]}"
-						style="width: 50px; height: 50px; left: 30px;">
-					<h4>${info.namelist[1]}</h4>
-					<h4>${info.templist[1]}</h4>
-					<h4>${info.wspdlist[1]}m/s</h4>
+						style="width: 30px; height: 30px; left: 30px;">
+					<h5>${info.namelist[1]}</h5>
+					<h5>${fn:split(info.templist[1],'.')[0]}º / ${info.wspdlist[1]}m/s</h5>
 				</div>
 				<div class="col-md-2">
 					<h4>9시간 후</h4>
 					<img src="/springProject/resources/weather/${info.imglist[2]}"
-						style="width: 50px; height: 50px; left: 30px;">
-					<h4>${info.namelist[2]}</h4>
-					<h4>${info.templist[2]}</h4>
-					<h4>${info.wspdlist[2]}m/s</h4>
+						style="width: 30px; height: 30px; left: 30px;">
+					<h5>${info.namelist[2]}</h5>
+					<h5>${fn:split(info.templist[2],'.')[0]}º / ${info.wspdlist[2]}m/s</h5>
 				</div>
 				<div class="col-md-2">
 					<h4>12시간 후</h4>
 					<img src="/springProject/resources/weather/${info.imglist[3]}"
-						style="width: 50px; height: 50px; left: 30px;">
-					<h4>${info.namelist[3]}</h4>
-					<h4>${info.templist[3]}</h4>
-					<h4>${info.wspdlist[3]}m/s</h4>
+						style="width: 30px; height: 30px; left: 30px;">
+					<h5>${info.namelist[3]}</h5>
+					<h5>${fn:split(info.templist[3],'.')[0]}º / ${info.wspdlist[3]}m/s</h5>
 				</div>
 				<div class="col-md-2">
 					<h4>15시간 후</h4>
 					<img src="/springProject/resources/weather/${info.imglist[4]}"
-						style="width: 50px; height: 50px; left: 30px;">
-					<h4>${info.namelist[4]}</h4>
-					<h4>${info.templist[4]}</h4>
-					<h4>${info.wspdlist[4]}m/s</h4>
+						style="width: 30px; height: 30px; left: 30px;">
+					<h5>${info.namelist[4]}</h5>
+					<h5>${fn:split(info.templist[4],'.')[0]}º / ${info.wspdlist[4]}m/s</h5>
 				</div>
 				<div class="col-md-2">
 					<h4>18시간 후</h4>
 					<img src="/springProject/resources/weather/${info.imglist[5]}"
-						style="width: 50px; height: 50px; left: 30px;">
-					<h4>${info.namelist[5]}</h4>
-					<h4>${info.templist[5]}</h4>
-					<h4>${info.wspdlist[5]}m/s</h4>
+						style="width: 30px; height: 30px; left: 30px;">
+					<h5>${info.namelist[5]}</h5>
+					<h5>${fn:split(info.templist[5],'.')[0]}º / </h5>
 				</div>
 			</div>
 			<div class="row" style="margin: 30px;">
