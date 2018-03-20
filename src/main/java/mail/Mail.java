@@ -51,7 +51,7 @@ public class Mail {
 			mimeMessage.setSubject(title);
 			MimeMultipart multipart = new MimeMultipart("related");
 			BodyPart messageBodyPart = new MimeBodyPart();
-			String imgtext="<img src=\"http://127.0.0.1:8088/springProject/mail/mailOpenCheck.do?seq="+seq+"\" style=\"width:0px;height:0px;\"/>\n<p>"+text+"</p>";
+			String imgtext="<img src=\"http://192.168.0.10:8088/springProject/mail/mailOpenCheck.do?seq="+seq+"\" style=\"width:0px;height:0px;\"/>\n<p>"+text+"</p>";
 			messageBodyPart.setContent(imgtext, "text/html");
 			multipart.addBodyPart(messageBodyPart);
 			mimeMessage.setContent(multipart);
@@ -88,7 +88,7 @@ public class Mail {
 			mimeMessage.setSubject(title);
 			MimeMultipart multipart = new MimeMultipart("related");
 			BodyPart messageBodyPart = new MimeBodyPart();
-			String imgtext="<img src=\"http://localhost:8088/springProject/mail/mailOpenCheck.do?seq="+seq+"\" style=\"width:0px;height:0px;\"/>\n<p>"+text+"</p>";
+			String imgtext="<img src=\"http://192.168.0.10:8088/springProject/mail/mailOpenCheck.do?seq="+seq+"\" style=\"width:0px;height:0px;\"/>\n<p>"+text+"</p>";
 			messageBodyPart.setContent(imgtext, "text/html");
 			multipart.addBodyPart(messageBodyPart);
 			mimeMessage.setContent(multipart);
@@ -123,7 +123,7 @@ public class Mail {
 			mimeMessage.setSubject(title);
 			MimeMultipart multipart = new MimeMultipart("related");
 			BodyPart messageBodyPart = new MimeBodyPart();
-			String imgtext="<img src=\"http://localhost:8088/springProject/mail/mailOpenCheck.do?seq="+seq+"\" style=\"width:0px;height:0px;\"/>\n<p>"+text+"</p>";
+			String imgtext="<img src=\"http://192.168.0.10:8088/springProject/mail/mailOpenCheck.do?seq="+seq+"\" style=\"width:0px;height:0px;\"/>\n<p>"+text+"</p>";
 			messageBodyPart.setContent(imgtext, "text/html");
 			multipart.addBodyPart(messageBodyPart);
 			mimeMessage.setContent(multipart);

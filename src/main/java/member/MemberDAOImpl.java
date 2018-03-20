@@ -22,7 +22,7 @@ public class MemberDAOImpl implements MemberDAO {
 	}
 	@Override
 	public MemberVO login(String id, String password) {
-		Map<String,String> values=new HashMap<>();
+		Map<String,String> values=new HashMap<String,String>();
 		values.put("id",id);
 		values.put("password",password);
 		return session.selectOne("springProject.member.login",values);
