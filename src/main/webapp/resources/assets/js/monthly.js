@@ -211,11 +211,11 @@ Monthly 2.2.2 by Kevin Thornbloom is licensed under a Creative Commons Attributi
 			
 			var startTime = _getEventDetail(event, "starttime"),
 				timeHtml = "",
+				eventId = _getEventDetail(event, "id"),
 				eventTitle = _getEventDetail(event, "name"),
-				eventURL = _getEventDetail(event, "url")+"?eventTitle="+eventTitle,// 아주 중요!!!!!!! 하하하하하하하하하 찾았다!! 데이터를 넘기는 곳이다!!(상세보기에서 클릭했을때!! 수정하기로 넘기자)
+				eventURL = _getEventDetail(event, "url")+"?schedule_no="+eventId,// 아주 중요!!!!!!! 하하하하하하하하하 찾았다!! 데이터를 넘기는 곳이다!!(상세보기에서 클릭했을때!! 수정하기로 넘기자)
 				eventClass = _getEventDetail(event, "class"),
 				eventColor = _getEventDetail(event, "color"),
-				eventId = _getEventDetail(event, "id"),
 				customClass = eventClass ? " " + eventClass : "",
 				dayStartTag = "<div",
 				dayEndTags = "</span></div>";

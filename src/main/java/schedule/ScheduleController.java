@@ -51,12 +51,10 @@ public class ScheduleController {
 		root.put("monthly", montlyArray);
 		
 		String Info = root.toJSONString();
-		System.out.println(root);
 		
 		try {
 			String path=WebUtils.getRealPath(req.getSession().getServletContext(),"/resources/json");
 			path = path+"\\events.json";
-			System.out.println(path);
 			FileWriter file = new FileWriter(path);
 			file.write(Info);
 			file.flush();
@@ -69,38 +67,9 @@ public class ScheduleController {
 		mav.setViewName("schedule");
 		return mav;
 	}
-	@RequestMapping(value="/schedule/get.do",produces="text/json;charset=UTF-8")
-	@ResponseBody
-	public JSONObject getGeo() {
-		List<ScheduleVO> schedulelist = service.scheduleList();
-		ScheduleVO schedule;
-		int size = schedulelist.size();
-		
-		
-		JSONObject root = new JSONObject();
-		JSONArray montlyArray = new JSONArray();
-		String url = "/springProject/schedule/index.do"; 
-		for (int i = 0; i < size; i++) {
-			JSONObject montlyInfo = new JSONObject();
-			schedule = schedulelist.get(i);
-			System.out.println(schedule.getSchedule_no());
-			montlyInfo.put("id", schedule.getSchedule_no());
-			montlyInfo.put("name", schedule.getSchedule_title());
-			montlyInfo.put("startdate", schedule.getStartdate());
-			montlyInfo.put("enddate", schedule.getEnddate());
-			montlyInfo.put("starttime", schedule.getStarttime());
-			montlyInfo.put("endtime", schedule.getEndtime());
-			montlyInfo.put("color", "#5cb85c");
-			montlyInfo.put("url", url.toString());
-			montlyArray.add(montlyInfo);
-		}
-		root.put("monthly", montlyArray);
-		return root;
-	}
 	
 	@RequestMapping(value ="/schedule/insert.do", method=RequestMethod.POST)
 	public ModelAndView insert(ScheduleVO schedule) {
-		System.out.println(schedule);
 		service.scheduleInsert(schedule);
 		ModelAndView mav=new ModelAndView();
 		mav.setViewName("redirect:../schedule/index.do");

@@ -54,7 +54,7 @@
         
         $("#alarm_time"+alno).val(alarm_time);
         $("#yoil"+alno).val(yoil);
-    	$('#alarm_insert_form'+alno).submit();
+    	$('#alarm_update_form'+alno).submit();
     }
 /* <c:forEach var="alarm" items="${alarmlist}">
 	<c:if test='${alarm.alarm_no == alarm_no}'>
@@ -199,8 +199,8 @@
 						<div class="modal fade" id="update_schedule${alarm.alarm_no}" role="dialog" style="text-align: center;">
 							<div class="modal-dialog">
 								<!-- Modal content-->
-								<form action="/springProject/alarm/update.do?alarm_no=${alarm.alarm_no}" id="alarm_insert_form${alarm.alarm_no}"
-									name="alarm_insert_form${alarm.alarm_no}" method="post">
+								<form action="/springProject/alarm/update.do?alarm_no=${alarm.alarm_no}" id="alarm_update_form${alarm.alarm_no}"
+									name="alarm_update_form${alarm.alarm_no}" method="post">
 									<div class="modal-content" style="width: 520px; height: 400px; ">
 										<div class="modal-header" style="width: 520px; height: 50px; background-color: #428bca;">
 											<h3 style="text-align: center; margin-top: -10px;color:white;">알람 수정</h3>
