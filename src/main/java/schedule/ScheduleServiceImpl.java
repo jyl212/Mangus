@@ -14,7 +14,13 @@ public class ScheduleServiceImpl implements ScheduleService {
 	
 	@Override
 	public int scheduleInsert(ScheduleVO schedule) {
+		System.out.println(schedule+"serviceservicesssssssssssssssssssssssssss");
 		return dao.scheduleInsert(schedule);
+	}
+
+	@Override
+	public List<ScheduleVO> scheduleList() {
+		return dao.scheduleList();
 	}
 
 

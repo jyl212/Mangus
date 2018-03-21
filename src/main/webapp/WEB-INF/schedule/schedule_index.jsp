@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -82,6 +84,14 @@
 </head>
 <body>
 <div class="page">
+	<c:forEach var="schedule" items="${schedulelist}">
+		${schedule.schedule_no}
+		${schedule.schedule_title}
+		${schedule.schedule_location}
+		${schedule.schedule_memo}
+		${schedule.alarm_flag}
+		${schedule.id}
+	</c:forEach>
 		<h2 style="text-align: center;">나의 스케줄 확인</h2>
 		<div style="text-align: center;">
 			<div style="width:100%; max-width:600px; display:inline-block; text-align: center;">
@@ -108,11 +118,10 @@
 <script type="text/javascript" src="/springProject/resources/assets/js/monthly.js"></script>
 <script type="text/javascript">
 	$(window).load( function() {
-
 		$('#mycalendar').monthly({
 			mode: 'event',
 			jsonUrl: '/springProject/resources/json/events.json',
-			dataType: 'json'
+			dataType: 'json',
 			//xmlUrl: '/springProject/resources/xml/events.xml'
 		});
 

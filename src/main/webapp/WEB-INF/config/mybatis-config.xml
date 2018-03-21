@@ -8,11 +8,13 @@
 		<typeAlias type="mail.MailVO2" alias="mail"/>
 		<typeAlias type="sms.GroupVO" alias="group"/>
 		<typeAlias type="sms.PhoneVO" alias="phone"/>
+		<typeAlias type="schedule.ScheduleVO" alias="schedule" />
 	</typeAliases>
 	<mappers>
 		<mapper resource="mapper/member.xml" />
 		<mapper resource="mapper/alarm.xml" />
 		<mapper resource="mapper/mail.xml" />
 		<mapper resource="mapper/sms.xml" />
+		<mapper resource="mapper/schedule.xml" />
 	</mappers>
 </configuration>

@@ -16,4 +16,10 @@ public class ScheduleDAOImpl implements ScheduleDAO {
 		System.out.println(schedule);
 		return session.insert("springProject.schedule.insert",schedule);
 	}
+
+	@Override
+	public List<ScheduleVO> scheduleList() {
+		List<ScheduleVO> schedulelist = session.selectList("springProject.schedule.list");
+		return schedulelist;
+	}
 }
