@@ -58,6 +58,7 @@
 
 	});
 </script>
+
 <script type="text/javascript">
 	function scheduleInsert(){
 		start_clok = $("select[name=schedule_start_clok]").val()
@@ -90,10 +91,23 @@
 		$('#schedule_insert_form').submit();
 	}
 	function colorselect(color){
-		alert("색상을 선택 하였습니다.")
 		$("#color").val(color)
+	//	sBtn.removeClass("active");
+	//	$(".colorselect1").parent().addClass("active");
+	//	$(".colorselect1").toggle("active");
 	}
+
 </script>
+<style>
+ .colorselect1:hover,
+ .colorselect1:focus,
+ .colorselect1:active,
+ .colorselect1.active {
+  color: black;
+  border: 5px solid;
+ }
+</style>
+
 </head>
 <body>
 <div class="col-md-12 col-sm-12 col-xs-12" >
@@ -248,13 +262,13 @@
 	</div>
 	<div class="col-md-1 col-sm-1 col-xs-1 oneline-conftrol"></div>
 	<!--end -->
-	<div class="col-md-12 col-sm-12 col-xs-12 mb" style="padding: 25px; margin-left: 40px ; text-align: center; font-size: 13pt;">
-		<span style="padding: 20px; text-align: center;" class="label label-default" onclick="colorselect('#777777')">색상 선택</span>
-		<span style="padding: 20px; text-align: center;" class="label label-primary" onclick="colorselect('#337cbb')">색상 선택</span>
-		<span style="padding: 20px; text-align: center;" class="label label-success" onclick="colorselect('#5cb85c')">색상 선택</span>
-		<span style="padding: 20px; text-align: center;" class="label label-info" onclick="colorselect('#5bc0de')">색상 선택</span>
-		<span style="padding: 20px; text-align: center;" class="label label-warning" onclick="colorselect('#f0ad4e')">색상 선택</span>
-		<span style="padding: 20px; text-align: center;" class="label label-danger" onclick="colorselect('#d9534f')">색상 선택</span>
+	<div class="col-md-12 col-sm-12 col-xs-12 mb btn-group btn-group-justified" style="padding: 25px; margin-left: 40px ; text-align: center; font-size: 13pt;">
+		<span  class="label label-default colorselect1 btn-group" onclick="colorselect('#777777')">색상 선택</span>
+		<span  class="label label-primary colorselect1 btn-group" onclick="colorselect('#337cbb')">색상 선택</span>
+		<span  class="label label-success colorselect1 btn-group" onclick="colorselect('#5cb85c')">색상 선택</span>
+		<span  class="label label-info colorselect1 btn-group" onclick="colorselect('#5bc0de')">색상 선택</span>
+		<span  class="label label-warning colorselect1 btn-group" onclick="colorselect('#f0ad4e')">색상 선택</span>
+		<span  class="label label-danger colorselect1 btn-group" onclick="colorselect('#d9534f')">색상 선택</span>
 	</div>
 	<div class="col-md-12 col-sm-12 col-xs-12" style="padding: 20px;">
 	
