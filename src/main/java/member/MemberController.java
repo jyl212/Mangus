@@ -61,7 +61,6 @@ public class MemberController {
 		if(session!=null){
 			session.invalidate();
 		}
-		
 		return "redirect:../index.do";
 	}
 }
