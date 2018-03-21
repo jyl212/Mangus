@@ -70,4 +70,5 @@
 	
 	
 	<context:component-scan base-package="kr.kitri.springProject" />
+	
 </beans:beans>

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="se" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -44,15 +45,13 @@
         </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <c:choose>
-        	<c:when test="${user.name eq null}">
-        		<li><a href="/springProject/member/signup.do"><span class="glyphicon glyphicon-user"></span>Sign Up</a></li>
-        		<li><a href="/springProject/member/login.do"><span class="glyphicon glyphicon-log-in"></span>Login</a></li>
-        	</c:when>
-        	<c:otherwise>
-        		<li><span style="color:white;">${user.name}님 환영합니다.</span><a href="/springProject/member/logout.do"><span class="glyphicon glyphicon-log-out"></span>Logout</a></li>
-      		</c:otherwise>
-      	</c:choose>
+        <se:authorize access="isAnonymous()">
+       		<li><a href="/springProject/member/signup.do"><span class="glyphicon glyphicon-user"></span>Sign Up</a></li>
+       		<li><a href="/springProject/member/login"><span class="glyphicon glyphicon-log-in"></span>Login</a></li>
+       	</se:authorize>
+       	<se:authorize access="isAuthenticated()">
+       		<li><a href="/springProject/member/logout.do"><span class="glyphicon glyphicon-log-out"></span>Logout</a></li>
+     	</se:authorize>
       </ul>
     </div>
   </div>

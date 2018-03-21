@@ -62,7 +62,7 @@
 					<div class="row fw11" id="child">
 						<div class="col-md-4 fw11">
 							<img src="/springProject/resources/weather/${today.img}"
-								style="width: 150px; height: 150px;opacity:0.8;">
+								style="width: 150px; height: 150px;">
 						</div>
 						<div class="col-md-8 fw11">
 							<div class="row" style="text-align:center;">

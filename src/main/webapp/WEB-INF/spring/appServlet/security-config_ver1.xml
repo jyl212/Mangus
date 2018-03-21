@@ -10,15 +10,13 @@
 		<security:intercept-url pattern="/resources/**" access="permitAll"/>
 		<security:intercept-url pattern="/mail/**" access="hasAnyRole('ROLE_USER','ROLE_ADMIN')"/>
 		<security:intercept-url pattern="/**" access="permitAll"/>
-		<security:form-login username-parameter="id" password-parameter="password" login-page="/member/login.do" default-target-url="/index.do" authentication-failure-url="/member/login?fail=true"/>
+		<security:form-login username-parameter="id" password-parameter="password" login-page="/member/login" default-target-url="/index.do" authentication-failure-url="/member/login?fail=true"/>
 		<security:logout delete-cookies="true" logout-success-url="/member/login" logout-url="/member/logout.do" invalidate-session="true"/>
 	</security:http>
 	<security:authentication-manager>
-		<security:authentication-provider>
-			<security:user-service>
-				<security:user name="user" password="user" authorities="ROLE_USER"/>
-				<security:user name="admin" password="admin" authorities="ROLE_ADMIN"/>
-			</security:user-service>
+		<security:authentication-provider user-service-ref="loginService">
 		</security:authentication-provider>
 	</security:authentication-manager>
+	<bean id="loginService" class="member.SecurityLoginService"/>
+	<import resource="servlet-context.xml"/>
 </beans>

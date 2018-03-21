@@ -11,4 +11,9 @@
 	<select id="login" resultType="member" parameterType="Map">
 		select * from member where id=#{id} and password=#{password}
 	</select>
+	<select id="securityLogin" resultType="map">
+		select id as username,password,name,address,mail,phone,birth,gender,
+		       role as authority
+		       from member where id = #{username} 
+	</select>
 </mapper>
