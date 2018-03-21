@@ -3,7 +3,7 @@
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  <mapper namespace="springProject.schedule">
  	<insert id="insert" parameterType="String">
- 		insert into schedule values(schedule_seq.nextval,#{id},#{schedule_title},#{schedule_location},#{schedule_memo},#{alarm_flag},#{startdate},#{starttime},#{enddate},#{endtime})
+ 		insert into schedule values(schedule_seq.nextval,#{id},#{schedule_title},#{schedule_location},#{schedule_memo},#{alarm_flag},#{startdate},#{starttime},#{enddate},#{endtime},#{color})
  	</insert>
  	<select id="list" resultType="schedule">
 		select * from schedule

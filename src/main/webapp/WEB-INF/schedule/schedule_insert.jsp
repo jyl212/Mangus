@@ -91,7 +91,7 @@
 	}
 	function colorselect(color){
 		alert("색상을 선택 하였습니다.")
-		$("#selectcolor").val(color)
+		$("#color").val(color)
 	}
 </script>
 </head>
@@ -243,7 +243,7 @@
 			<input type="hidden" id="enddate" name="enddate">
 			<input type="hidden" id="endtime" name="endtime">
 			<input type="hidden" id="alarm_flag" name="alarm_flag">
-			<input type="hidden" id="selectcolor" name="selectcolor">
+			<input type="hidden" id="color" name="color">
         </div>
 	</div>
 	<div class="col-md-1 col-sm-1 col-xs-1 oneline-conftrol"></div>

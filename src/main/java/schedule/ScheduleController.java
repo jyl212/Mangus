@@ -4,6 +4,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.util.WebUtils;
 
 
 @Controller
@@ -21,7 +24,7 @@ public class ScheduleController {
 	ScheduleService service;
 	
 	@RequestMapping(value="/schedule/index.do")
-	public ModelAndView index() {
+	public ModelAndView index(HttpServletRequest req) {
 		ModelAndView mav=new ModelAndView();
 		List<ScheduleVO> schedulelist = service.scheduleList();
 		ScheduleVO schedule;
@@ -41,7 +44,7 @@ public class ScheduleController {
 			montlyInfo.put("enddate", schedule.getEnddate());
 			montlyInfo.put("starttime", schedule.getStarttime());
 			montlyInfo.put("endtime", schedule.getEndtime());
-			montlyInfo.put("color", "#5cb85c");
+			montlyInfo.put("color", schedule.getColor());
 			montlyInfo.put("url", url.toString());
 			montlyArray.add(montlyInfo);
 		}
@@ -51,7 +54,10 @@ public class ScheduleController {
 		System.out.println(root);
 		
 		try {
-			FileWriter file = new FileWriter("C:\\ICT\\WORK\\mangus\\springproject\\src\\main\\webapp\\resources\\json\\events.json");
+			String path=WebUtils.getRealPath(req.getSession().getServletContext(),"/resources/json");
+			path = path+"\\events.json";
+			System.out.println(path);
+			FileWriter file = new FileWriter(path);
 			file.write(Info);
 			file.flush();
 			file.close();
@@ -94,6 +100,7 @@ public class ScheduleController {
 	
 	@RequestMapping(value ="/schedule/insert.do", method=RequestMethod.POST)
 	public ModelAndView insert(ScheduleVO schedule) {
+		System.out.println(schedule);
 		service.scheduleInsert(schedule);
 		ModelAndView mav=new ModelAndView();
 		mav.setViewName("redirect:../schedule/index.do");
