@@ -70,7 +70,6 @@
 </script>
 </head>
 <body onload="getTime()">
-	<h1>하하하하하하하하하하하하하하핳하하</h1>
 	<div class="no-mg-no-pd">
 			<div id="showtime" ></div>
 	  			<div class="col-lg-4 col-lg-offset-4">
