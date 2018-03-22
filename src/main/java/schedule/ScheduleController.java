@@ -37,7 +37,6 @@ public class ScheduleController {
 		for (int i = 0; i < size; i++) {
 			JSONObject montlyInfo = new JSONObject();
 			schedule = schedulelist.get(i);
-			System.out.println(schedule.getSchedule_no());
 			montlyInfo.put("id", schedule.getSchedule_no());
 			montlyInfo.put("name", schedule.getSchedule_title());
 			montlyInfo.put("startdate", schedule.getStartdate());
