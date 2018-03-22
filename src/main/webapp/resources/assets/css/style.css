@@ -2921,3 +2921,8 @@ transition-duration: .3s;
 .oneline-lables{
 	text-align: right; 	padding-top: 10px; 	color: black;
 }
+.colorselect1{
+	padding: 20px; 
+	text-align: center; 
+	cursor: pointer;
+}

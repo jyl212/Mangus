@@ -14,6 +14,6 @@
 	<select id="securityLogin" resultType="map">
 		select id as username,password,name,address,mail,phone,birth,gender,
 		       role as authority
-		       from member where id = #{username} 
+		       from member where id = #{username}
 	</select>
 </mapper>
