@@ -55,6 +55,9 @@
 	<definition name="mail/sendlist" extends="mainTemplate">
 		<put-attribute name="content" value="/WEB-INF/mail/list.jsp" />
 	</definition>
+	<definition name="mail/read" extends="mainTemplate">
+		<put-attribute name="content" value="/WEB-INF/mail/read.jsp" />
+	</definition>
 
 	<!-- 회원가입 레이아웃 -->
 	<definition name="/member/signup" extends="mainTemplate">

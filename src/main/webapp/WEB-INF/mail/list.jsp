@@ -31,8 +31,8 @@
 						</c:otherwise>
 					</c:choose>
 					</td>
-					<td>${mail.rev}</td>
-					<td>${mail.title}</td>
+					<td><a href="/springProject/mail/index.do?rev=${mail.rev}">${mail.rev}</a></td>
+					<td><a href="/springProject/mail/read.do?mail_seq=${mail.mail_seq}">${mail.title}</a></td>
 					<td>${mail.send_date}</td>
 					<td>${mail.read_date}</td>
 					<td><a href="/springProject/mail/delete.do?seq=${mail.mail_seq}">삭제</a></td>

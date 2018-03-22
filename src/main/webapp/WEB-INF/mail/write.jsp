@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE>
 <html>
 <head>
@@ -21,7 +22,14 @@
 				<label for="id" class="control-label">받는 사람</label>
 			</div>
 			<div class="col-md-8">
-				<input type="text" class="form-control input-lg" name="receiver" id="receiver">
+				<c:choose>
+				<c:when test="${rev eq null }">
+					<input type="text" class="form-control input-lg" name="receiver" id="receiver">
+				</c:when>
+				<c:otherwise>
+					<input type="text" class="form-control input-lg" name="receiver" id="receiver" value="${rev}">
+				</c:otherwise>
+				</c:choose>
 			</div>
 		</div>
 		<div class="form-group">
