@@ -30,8 +30,11 @@ public class MailController {
 		return "mail/mailOk";
 	}
 	@RequestMapping("/mail/index.do")
-	public String index() {
-		return "mail";
+	public ModelAndView index(String rev) {
+		ModelAndView mav=new ModelAndView();
+		mav.addObject("rev",rev);
+		mav.setViewName("mail");
+		return mav;
 	}
 	@RequestMapping("/mail/mailOpenCheck.do")
 	public void mailCheck(@RequestParam String seq) {
@@ -55,5 +58,13 @@ public class MailController {
 			return "redirect:/mail/mailList.do";
 		}
 		return "mail/deleteFail";
+	}
+	@RequestMapping("/mail/read.do")
+	public ModelAndView mailRead(@RequestParam String mail_seq) {
+		ModelAndView mav=new ModelAndView();
+		MailVO2 data=service.read(mail_seq);
+		mav.addObject("mail",data);
+		mav.setViewName("mail/read");
+		return mav;
 	}
 }
