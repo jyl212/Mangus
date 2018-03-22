@@ -33,7 +33,7 @@ public class ScheduleController {
 		
 		JSONObject root = new JSONObject();
 		JSONArray montlyArray = new JSONArray();
-		String url = "/springProject/schedule/index.do"; 
+		String url = "/springProject/schedule/update.do"; 
 		for (int i = 0; i < size; i++) {
 			JSONObject montlyInfo = new JSONObject();
 			schedule = schedulelist.get(i);
@@ -82,5 +82,10 @@ public class ScheduleController {
 		mav.setViewName("schedule/insert");
 		return mav;
 	}
-	
+	@RequestMapping(value ="/schedule/update.do", method=RequestMethod.GET)
+	public ModelAndView updateView() {
+		ModelAndView mav=new ModelAndView();
+		mav.setViewName("schedule/update");
+		return mav;
+	}
 }

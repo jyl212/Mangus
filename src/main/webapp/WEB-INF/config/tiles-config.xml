@@ -39,6 +39,9 @@
 	<definition name="schedule/insert" extends="mainTemplate">
 		<put-attribute name="content" value="/WEB-INF/schedule/schedule_insert.jsp" />
 	</definition>
+	<definition name="schedule/update" extends="mainTemplate">
+		<put-attribute name="content" value="/WEB-INF/schedule/schedule_update.jsp" />
+	</definition>
 	<!-- 메일화면 레이아웃 -->
 	<definition name="mail" extends="mainTemplate">
       <put-attribute name="content" value="/WEB-INF/mail/write.jsp" />

@@ -224,11 +224,12 @@ Monthly 2.2.2 by Kevin Thornbloom is licensed under a Creative Commons Attributi
 
 			if(startTime) {
 				var endTime = _getEventDetail(event, "endtime");
-				timeHtml = '<div  style="color: black"><div class="monthly-list-time-start"  style="color: black">' + formatTime(startTime) + "</div>"
+				timeHtml = '<div  style="color: black">시간&nbsp&nbsp&nbsp:&nbsp&nbsp&nbsp<div class="monthly-list-time-start"  style="color: black">' + formatTime(startTime) + "</div>"
 					+ (endTime ? '<div class="monthly-list-time-end"  style="color: black">' + formatTime(endTime) +"</div>" : "")
 					+ "</div>"
-					+'<div > 내용&nbsp&nbsp&nbsp:&nbsp&nbsp&nbsp'+ eventMemo + "</div>"
-					+'<div style="color: black"> 장소&nbsp&nbsp&nbsp&nbsp:&nbsp&nbsp&nbsp&nbsp'+ eventLocation + "</div>";
+					+'<div style="color: black"> 장소&nbsp&nbsp&nbsp&nbsp:&nbsp&nbsp&nbsp&nbsp'+ eventLocation + "</div>"
+					+'<div style="color: black"> 내용&nbsp&nbsp&nbsp:&nbsp&nbsp&nbsp'+ eventMemo + "</div>";
+					
 			}
 			
 			if(options.linkCalendarToEventUrl && eventURL) {
