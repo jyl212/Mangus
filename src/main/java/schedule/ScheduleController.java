@@ -39,6 +39,8 @@ public class ScheduleController {
 			schedule = schedulelist.get(i);
 			montlyInfo.put("id", schedule.getSchedule_no());
 			montlyInfo.put("name", schedule.getSchedule_title());
+			montlyInfo.put("location", schedule.getSchedule_location());
+			montlyInfo.put("memo", schedule.getSchedule_memo());
 			montlyInfo.put("startdate", schedule.getStartdate());
 			montlyInfo.put("enddate", schedule.getEnddate());
 			montlyInfo.put("starttime", schedule.getStarttime());

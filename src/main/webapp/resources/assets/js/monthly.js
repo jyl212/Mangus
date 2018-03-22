@@ -213,6 +213,8 @@ Monthly 2.2.2 by Kevin Thornbloom is licensed under a Creative Commons Attributi
 				timeHtml = "",
 				eventId = _getEventDetail(event, "id"),
 				eventTitle = _getEventDetail(event, "name"),
+				eventLocation = _getEventDetail(event, "location"),
+				eventMemo = _getEventDetail(event, "memo"),
 				eventURL = _getEventDetail(event, "url")+"?schedule_no="+eventId,// 아주 중요!!!!!!! 하하하하하하하하하 찾았다!! 데이터를 넘기는 곳이다!!(상세보기에서 클릭했을때!! 수정하기로 넘기자)
 				eventClass = _getEventDetail(event, "class"),
 				eventColor = _getEventDetail(event, "color"),
@@ -222,11 +224,13 @@ Monthly 2.2.2 by Kevin Thornbloom is licensed under a Creative Commons Attributi
 
 			if(startTime) {
 				var endTime = _getEventDetail(event, "endtime");
-				timeHtml = '<div><div class="monthly-list-time-start">' + formatTime(startTime) + "</div>"
-					+ (endTime ? '<div class="monthly-list-time-end">' + formatTime(endTime) + "</div>" : "")
-					+ "</div>";
+				timeHtml = '<div  style="color: black"><div class="monthly-list-time-start"  style="color: black">' + formatTime(startTime) + "</div>"
+					+ (endTime ? '<div class="monthly-list-time-end"  style="color: black">' + formatTime(endTime) +"</div>" : "")
+					+ "</div>"
+					+'<div > 내용&nbsp&nbsp&nbsp:&nbsp&nbsp&nbsp'+ eventMemo + "</div>"
+					+'<div style="color: black"> 장소&nbsp&nbsp&nbsp&nbsp:&nbsp&nbsp&nbsp&nbsp'+ eventLocation + "</div>";
 			}
-
+			
 			if(options.linkCalendarToEventUrl && eventURL) {
 				dayStartTag = "<a" + attr("href", eventURL);
 				dayEndTags = "</span></a>";
@@ -243,7 +247,7 @@ Monthly 2.2.2 by Kevin Thornbloom is licensed under a Creative Commons Attributi
 					+ attr("data-eventid", eventId)
 					+ (eventColor ? attr("style", "background:" + eventColor) : "")
 					+ attr("title", eventTitle)
-					+ ">" + eventTitle + " " + timeHtml + "</a>";
+					+ "><div style='font-size:13pt; text-shadow:1px 1px 1px black; font-weight=900'>" + eventTitle + "</div> " + timeHtml + "</a>";
 			for(var index = startDayNumber; index <= endDayNumber; index++) {
 				var doShowTitle = index === showEventTitleOnDay;
 				// Add to calendar view
@@ -378,7 +382,7 @@ Monthly 2.2.2 by Kevin Thornbloom is licensed under a Creative Commons Attributi
 			return options.dataType === "xml" ? $(event).find(nodeName).text() : event[nodeName];
 		}
 
-		// Returns a 12-hour format hour/minute with period. Opportunity for future localization.
+		// 시간을 pm, am으로 바꾸는 작업
 		function formatTime(value) {
 			var timeSplit = value.split(":");
 			var hour = parseInt(timeSplit[0], 10);
@@ -420,19 +424,19 @@ Monthly 2.2.2 by Kevin Thornbloom is licensed under a Creative Commons Attributi
 			}
 		}
 
-		// Advance months
+		// 다음달 클릭
 		$(document.body).on("click", parent + " .monthly-next", function (event) {
 			setNextMonth();
 			event.preventDefault();
 		});
 
-		// Go back in months
+		// 이전달 클릭
 		$(document.body).on("click", parent + " .monthly-prev", function (event) {
 			setPreviousMonth();
 			event.preventDefault();
 		});
 
-		// Reset Month
+		// 다시 오늘 날짜로?
 		$(document.body).on("click", parent + " .monthly-reset", function (event) {
 			$(this).remove();
 			setMonthly(currentMonth, currentYear);
