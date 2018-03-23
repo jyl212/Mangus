@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import authentication.SecurityLoginDTO;
 import member.MemberVO;
 
 @Controller
@@ -46,7 +47,8 @@ public class MailController {
 	public ModelAndView mailList(HttpServletRequest request) {
 		HttpSession session=request.getSession();
 		ModelAndView mav=new ModelAndView();
-		MemberVO member=(MemberVO)session.getAttribute("user");
+		SecurityLoginDTO member=(SecurityLoginDTO)session.getAttribute("user");
+		System.out.println(member.getId());
 		mav.addObject("list",service.list(member.getId()));
 		mav.setViewName("mail/sendlist");
 		return mav;

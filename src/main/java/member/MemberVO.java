@@ -2,13 +2,22 @@ package member;
 
 public class MemberVO {
 	String id;
-	String password;
+	String pass;
 	String name;
 	String address;
 	String mail;
 	String birth;
 	String phone;
+	String encpass;
 	
+	public String getEncpass() {
+		return encpass;
+	}
+
+	public void setEncpass(String encpass) {
+		this.encpass = encpass;
+	}
+
 	public String getMail() {
 		return mail;
 	}
@@ -25,7 +34,7 @@ public class MemberVO {
 		this.phone = phone;
 	}
 
-	char gender;
+	String gender;
 
 	public String getId() {
 		return id;
@@ -35,12 +44,12 @@ public class MemberVO {
 		this.id = id;
 	}
 
-	public String getPassword() {
-		return password;
+	public String getPass() {
+		return pass;
 	}
 
-	public void setPassword(String password) {
-		this.password = password;
+	public void setPass(String pass) {
+		this.pass = pass;
 	}
 
 	public String getName() {
@@ -67,30 +76,31 @@ public class MemberVO {
 		this.birth = birth;
 	}
 
-	public char getGender() {
+	public String getGender() {
 		return gender;
 	}
 
-	public void setGender(char gender) {
+	public void setGender(String gender) {
 		this.gender = gender;
 	}
 
 	@Override
 	public String toString() {
-		return "MemberVO [id=" + id + ", password=" + password + ", name=" + name + ", address=" + address +", mail=" + mail + ", birth="
-				+ birth + ", phone=" + phone + ", gender=" + gender + "]";
+		return "MemberVO [id=" + id + ", pass=" + pass + ", name=" + name + ", address=" + address +", mail=" + mail + ", birth="
+				+ birth + ", phone=" + phone + ", gender=" + gender + ", encpass=" + encpass + "]";
 	}
-	public MemberVO(String id, String password, String name, String address, String mail, String birth, String phone,
-			char gender) {
+	public MemberVO(String id, String pass, String name, String address, String mail, String birth, String phone,
+			String gender,String encpass) {
 		super();
 		this.id = id;
-		this.password = password;
+		this.pass = pass;
 		this.name = name;
 		this.address = address;
 		this.mail = mail;
 		this.birth = birth;
 		this.phone = phone;
 		this.gender = gender;
+		this.encpass=encpass;
 	}
 
 	public MemberVO() {
