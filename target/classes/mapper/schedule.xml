@@ -8,4 +8,7 @@
  	<select id="list" resultType="schedule">
 		select * from schedule
 	</select>
+	<select id="selectvo" resultType="schedule" parameterType="Integer">
+		select * from schedule where schedule_no=#{schedule_no}
+	</select>
  </mapper>

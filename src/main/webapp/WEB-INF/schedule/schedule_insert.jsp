@@ -92,9 +92,7 @@
 	}
 	function colorselect(color){
 		$("#color").val(color)
-	//	sBtn.removeClass("active");
-	//	$(".colorselect1").parent().addClass("active");
-	//	$(".colorselect1").toggle("active");
+
 	}
 	function setPath(url) {
 		location.href = "/springProject/schedule/index.do";
@@ -265,13 +263,13 @@
 	</div>
 	<div class="col-md-1 col-sm-1 col-xs-1 oneline-conftrol"></div>
 	<!--end -->
-	<div class="col-md-12 col-sm-12 col-xs-12 mb btn-group-justified" style="padding: 25px; margin-left: 40px ; text-align: center; font-size: 13pt;">
-		<span  class="label label-default colorselect1 btn-group" onclick="colorselect('#777777')">색상 선택</span>
-		<span  class="label label-primary colorselect1 btn-group" onclick="colorselect('#337cbb')">색상 선택</span>
-		<span  class="label label-success colorselect1 btn-group" onclick="colorselect('#5cb85c')">색상 선택</span>
-		<span  class="label label-info colorselect1 btn-group" onclick="colorselect('#5bc0de')">색상 선택</span>
-		<span  class="label label-warning colorselect1 btn-group" onclick="colorselect('#f0ad4e')">색상 선택</span>
-		<span  class="label label-danger colorselect1 btn-group" onclick="colorselect('#d9534f')">색상 선택</span>
+	<div class="col-md-12 col-sm-12 col-xs-12 mb btn-group btn-group-justified" style="padding: 25px; margin-left: 40px ; text-align: center; font-size: 13pt; padding-top: 0px;">
+		<span  class="label label-default btn-group" onclick="colorselect('#777777')"> <input type="button" class="label-default colorselect1 form-control"  value="색상 선택"></span>
+		<span  class="label label-primary btn-group" onclick="colorselect('#337cbb')"><input type="button" class="label-primary colorselect1 form-control"  value="색상 선택"></span>
+		<span  class="label label-success btn-group" onclick="colorselect('#5cb85c')"><input type="button" class="label-success colorselect1 form-control"  value="색상 선택"></span>
+		<span  class="label label-info btn-group" onclick="colorselect('#5bc0de')"><input type="button" class="label-info colorselect1 form-control"  value="색상 선택"></span>
+		<span  class="label label-warning btn-group" onclick="colorselect('#f0ad4e')"><input type="button" class="label-warning colorselect1 form-control"  value="색상 선택"></span>
+		<span  class="label label-danger btn-group" onclick="colorselect('#d9534f')"><input type="button" class="label-danger colorselect1 form-control"  value="색상 선택"></span>
 	</div>
 	<div class="col-md-12 col-sm-12 col-xs-12" style="padding: 20px;">
 	
