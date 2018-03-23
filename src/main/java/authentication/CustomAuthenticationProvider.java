@@ -18,8 +18,11 @@ public class CustomAuthenticationProvider implements AuthenticationProvider{
 		String pwd=data.getCredentials().toString();
 		Object obj=data.getPrincipal();
 		User user=(User)securityService.loadUserByUsername(username);
+		System.out.println(user+",,,,,,,,,,,,"+user.getUsername()+user.getPassword());
 		boolean state=encoder.isPasswordValid(user.getPassword(),pwd,null);
 		UsernamePasswordAuthenticationToken authUser=null;
+		System.out.println(user.getPassword());
+		System.out.println(state);
 		if(state) {
 			authUser=new UsernamePasswordAuthenticationToken(user, pwd,user.getAuthorities());
 		}

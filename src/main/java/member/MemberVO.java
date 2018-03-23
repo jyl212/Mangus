@@ -8,7 +8,16 @@ public class MemberVO {
 	String mail;
 	String birth;
 	String phone;
+	String encpass;
 	
+	public String getEncpass() {
+		return encpass;
+	}
+
+	public void setEncpass(String encpass) {
+		this.encpass = encpass;
+	}
+
 	public String getMail() {
 		return mail;
 	}
@@ -78,10 +87,10 @@ public class MemberVO {
 	@Override
 	public String toString() {
 		return "MemberVO [id=" + id + ", password=" + password + ", name=" + name + ", address=" + address +", mail=" + mail + ", birth="
-				+ birth + ", phone=" + phone + ", gender=" + gender + "]";
+				+ birth + ", phone=" + phone + ", gender=" + gender + ", encpass=" + encpass + "]";
 	}
 	public MemberVO(String id, String password, String name, String address, String mail, String birth, String phone,
-			char gender) {
+			char gender,String encpass) {
 		super();
 		this.id = id;
 		this.password = password;
@@ -91,6 +100,7 @@ public class MemberVO {
 		this.birth = birth;
 		this.phone = phone;
 		this.gender = gender;
+		this.encpass=encpass;
 	}
 
 	public MemberVO() {

@@ -25,6 +25,7 @@ public class SecurityLoginService implements UserDetailsService{
 		UserDetails loginUser=null;
 	
 		List<GrantedAuthority> gaslist=new ArrayList<GrantedAuthority>();
+		System.out.println(user);
 		gaslist.add(new SimpleGrantedAuthority(user.get("AUTHORITY").toString()));
 		System.out.println("id==>"+user.get("USERNAME").toString()+"password=>"+user.get("PASSWORD").toString());
 	/*	>{PASSWORD=gnt!skdi#0573, MAIL=jyl212@naver.com, ADDRESS=서울 강북구 수유동 468-146 ㅁㅁㅁㅁ,

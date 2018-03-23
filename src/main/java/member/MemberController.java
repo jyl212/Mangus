@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.encoding.ShaPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class MemberController {
+	private ShaPasswordEncoder encoder=new ShaPasswordEncoder(256);
 	@Autowired
 	MemberSercive service;
 	
@@ -49,6 +51,8 @@ public class MemberController {
 	}
 	@RequestMapping("/member/register.do")
 	public String Register(MemberVO member) {
+		String dbpass=encoder.encodePassword(member.getPassword(),null);
+		member.setEncpass(dbpass);
 		int result=service.register(member);
 		if(result==1) {
 			return "/member/joinOk";
