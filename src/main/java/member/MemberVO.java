@@ -34,7 +34,7 @@ public class MemberVO {
 		this.phone = phone;
 	}
 
-	char gender;
+	String gender;
 
 	public String getId() {
 		return id;
@@ -76,11 +76,11 @@ public class MemberVO {
 		this.birth = birth;
 	}
 
-	public char getGender() {
+	public String getGender() {
 		return gender;
 	}
 
-	public void setGender(char gender) {
+	public void setGender(String gender) {
 		this.gender = gender;
 	}
 
@@ -90,7 +90,7 @@ public class MemberVO {
 				+ birth + ", phone=" + phone + ", gender=" + gender + ", encpass=" + encpass + "]";
 	}
 	public MemberVO(String id, String pass, String name, String address, String mail, String birth, String phone,
-			char gender,String encpass) {
+			String gender,String encpass) {
 		super();
 		this.id = id;
 		this.pass = pass;

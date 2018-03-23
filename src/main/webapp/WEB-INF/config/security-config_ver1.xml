@@ -13,14 +13,14 @@
 		<!-- <security:port-mappings>
 			<security:port-mapping http="8088" https="8443"/>
 		</security:port-mappings> -->
-		<security:form-login username-parameter="id" password-parameter="password" login-page="/member/login" default-target-url="/index.do" authentication-failure-url="/member/login?fail=true"/>
+		<security:form-login username-parameter="id" password-parameter="password" login-page="/member/login" default-target-url="/index.do" authentication-failure-url="/member/login?fail=true" authentication-success-handler-ref="successHandler"/>
 		<security:logout delete-cookies="true" logout-success-url="/member/login" logout-url="/member/logout.do" invalidate-session="true"/>
 	</security:http>
 	<security:authentication-manager>
 		<security:authentication-provider ref="customProvider">
 		</security:authentication-provider>
 	</security:authentication-manager>
-	<bean id="customProvider" class="authentication.CustomAuthenticationProvider">
-	</bean>
+	<bean id="customProvider" class="authentication.CustomAuthenticationProvider"/>
+	<bean id="successHandler" class="authentication.CustomAuthenticationSuccessHandler"/>
 	<import resource="servlet-context.xml"/>
 </beans>
