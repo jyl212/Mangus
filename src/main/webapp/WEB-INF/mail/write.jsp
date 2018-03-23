@@ -59,7 +59,7 @@
 				</button>
 			</div>
 		</div>
-		<input type="hidden" value="${user.password}" id="userpassword" name="userpassword"/>
+		<input type="hidden" value="${user.pass}" id="userpassword" name="userpassword"/>
 		<input type="hidden" value="${user.id}" id="userid" name="userid"/>
 	</form>
 </body>

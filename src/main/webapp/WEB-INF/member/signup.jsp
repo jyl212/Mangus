@@ -53,7 +53,7 @@
 		}
 	}
 	function passcheck() {
-		var pass=$("#password").val();
+		var pass=$("#pass").val();
 		var pass2=$("#pass_ok").val();
 		if(pass!=pass2){
 			$("#pass_text").text("비밀번호가 일치하지 않습니다.");
@@ -82,7 +82,6 @@
 			 var address=$("#address").val()+" "+$("#address2").val();
 			 $("#address").val(address);
 			 $("#myform").submit();
-			 
 		     return false;
 		}
 	}
@@ -111,8 +110,9 @@
 		<div class="col-md-2 col-sm-2 col-xs-2 oneline-conftrol"></div>
 		<div class="col-md-8 col-sm-8 col-xs-8 form-group" id="passbox">
 			<div class="col-md-6 col-sm-6 col-xs-6 centered">
-				<input type="password" class="form-control" id="password" name="password"
+				<input type="password" class="form-control" id="pass" name="pass"
 					placeholder="비밀번호" >
+				<label id="pass_text"></label>
 			</div>
 			<div class="col-md-6 col-sm-6 col-xs-6 centered"></div>
 		</div>

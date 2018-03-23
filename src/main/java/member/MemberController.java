@@ -51,7 +51,8 @@ public class MemberController {
 	}
 	@RequestMapping("/member/register.do")
 	public String Register(MemberVO member) {
-		String dbpass=encoder.encodePassword(member.getPassword(),null);
+		System.out.println(member);
+		String dbpass=encoder.encodePassword(member.getPass(),null);
 		member.setEncpass(dbpass);
 		int result=service.register(member);
 		if(result==1) {

@@ -35,7 +35,7 @@ public class SecurityLoginService implements UserDetailsService{
 				user.get("NAME").toString(),user.get("ADDRESS").toString(),
 				user.get("MAIL").toString(),user.get("BIRTH").toString(),
 				user.get("PHONE").toString(),user.get("GENDER").toString(),
-				user.get("AUTHORITY").toString());
+				user.get("AUTHORITY").toString(),user.get("PASS").toString());
 		System.out.println("test4");
 		System.out.println("loginuser==>"+loginUser);
 		return loginUser;

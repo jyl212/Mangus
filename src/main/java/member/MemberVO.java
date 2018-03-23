@@ -2,7 +2,7 @@ package member;
 
 public class MemberVO {
 	String id;
-	String password;
+	String pass;
 	String name;
 	String address;
 	String mail;
@@ -44,12 +44,12 @@ public class MemberVO {
 		this.id = id;
 	}
 
-	public String getPassword() {
-		return password;
+	public String getPass() {
+		return pass;
 	}
 
-	public void setPassword(String password) {
-		this.password = password;
+	public void setPass(String pass) {
+		this.pass = pass;
 	}
 
 	public String getName() {
@@ -86,14 +86,14 @@ public class MemberVO {
 
 	@Override
 	public String toString() {
-		return "MemberVO [id=" + id + ", password=" + password + ", name=" + name + ", address=" + address +", mail=" + mail + ", birth="
+		return "MemberVO [id=" + id + ", pass=" + pass + ", name=" + name + ", address=" + address +", mail=" + mail + ", birth="
 				+ birth + ", phone=" + phone + ", gender=" + gender + ", encpass=" + encpass + "]";
 	}
-	public MemberVO(String id, String password, String name, String address, String mail, String birth, String phone,
+	public MemberVO(String id, String pass, String name, String address, String mail, String birth, String phone,
 			char gender,String encpass) {
 		super();
 		this.id = id;
-		this.password = password;
+		this.pass = pass;
 		this.name = name;
 		this.address = address;
 		this.mail = mail;
