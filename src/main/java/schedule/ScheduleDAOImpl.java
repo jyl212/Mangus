@@ -22,4 +22,10 @@ public class ScheduleDAOImpl implements ScheduleDAO {
 		List<ScheduleVO> schedulelist = session.selectList("springProject.schedule.list");
 		return schedulelist;
 	}
+
+	@Override
+	public ScheduleVO scheduleInfo(int schedule_no) {
+		ScheduleVO scheduleinfo = session.selectOne("springProject.schedule.selectvo", schedule_no);
+		return scheduleinfo;
+	}
 }

@@ -83,9 +83,36 @@ public class ScheduleController {
 		return mav;
 	}
 	@RequestMapping(value ="/schedule/update.do", method=RequestMethod.GET)
-	public ModelAndView updateView() {
+	public ModelAndView updateinfoView(@RequestParam int schedule_no) {
+		ScheduleVO scheduleinfo = service.scheduleInfo(schedule_no);
+		
+		scheduleinfo.getStarttime();
+		scheduleinfo.getEndtime();
+		String[] start1 = scheduleinfo.getStartdate().split("-");
+		String[] end1 = scheduleinfo.getEnddate().split("-");
+		String startdate = start1[0]+"년 "+start1[1]+"월 "+start1[2]+"일";
+		String enddate = end1[0]+"년 "+end1[1]+"월 "+end1[2]+"일";
+		String[] start2 = scheduleinfo.getEndtime().split(":");
+		String[] end2 = scheduleinfo.getStarttime().split(":");
+		String startoclock = start2[0];
+		String startminute = start2[1];
+		String endoclock = end2[0];
+		String endminute = end2[1];
 		ModelAndView mav=new ModelAndView();
+		mav.addObject("startoclock", startoclock);
+		mav.addObject("startminute", startminute);
+		mav.addObject("endoclock", endoclock);
+		mav.addObject("enddate", enddate);
+		mav.addObject("endminute", endminute);
+		mav.addObject("startdate", startdate);
+		mav.addObject("scheduleinfo",scheduleinfo);
 		mav.setViewName("schedule/update");
+		return mav;
+	}
+	@RequestMapping(value ="/schedule/update.do", method=RequestMethod.POST)
+	public ModelAndView updateinsertView() {
+		ModelAndView mav=new ModelAndView();
+		mav.setViewName("redirect:../schedule/index.do");
 		return mav;
 	}
 }
