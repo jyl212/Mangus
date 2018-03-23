@@ -15,13 +15,6 @@
 <script type="text/javascript">
 	$(window).load( function() {
 
-		$('#mycalendar').monthly({
-			mode: 'event',
-			jsonUrl: '/springProject/resources/json/events1.json',
-			dataType: 'json'
-		//	xmlUrl: '/springProject/resources/xml/events.xml'
-		});
-
 		$('#mycalendar2').monthly({
 			mode: 'picker',
 			target: '#mytarget',
@@ -116,7 +109,7 @@
 <div class="col-md-12 col-sm-12 col-xs-12" >
 <form action="/springProject/schedule/insert.do" id="schedule_insert_form"
 									name="schedule_insert_form" method="post" accept-charset="utf-8">
-	<h2 style="text-align: center; height: 50px; margin-bottom: 20px">스케줄 등록</h2>
+	<h2 style="text-align: center; height: 50px; margin-bottom: 20px">스케줄 수정</h2>
 	<div class="col-md-1 col-sm-1 col-xs-1 oneline-conftrol"></div>
 	<div class="col-md-2 col-sm-2 col-xs-2 oneline-conftrol online-lab">
 
@@ -277,7 +270,7 @@
 	
 		<div class="col-md-4 col-sm-4 col-xs-4 text-center"></div>
 		<div class="col-md-2 col-sm-2 col-xs-2 text-center">
-			<input type="button" class="btn btn-success"	style="width: 100px; " onclick="scheduleInsert()" value="작성완료">
+			<input type="button" class="btn btn-success"	style="width: 100px; " onclick="scheduleInsert()" value="수정완료">
 		</div>
 		<div class="col-md-2 col-sm-2 col-xs-2 text-center">
 			<button type="reset" class="btn btn-default"
