@@ -1,4 +1,4 @@
-package member;
+package authentication;
 
 import java.util.Collection;
 
