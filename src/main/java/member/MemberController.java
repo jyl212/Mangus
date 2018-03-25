@@ -34,7 +34,6 @@ public class MemberController {
 	}
 	@RequestMapping(value="/member/login",method=RequestMethod.GET)
 	public String login() {
-		System.out.println("로그인.....");
 		return "/member/login";
 	}
 	@RequestMapping(value="/member/idcheck.do",method=RequestMethod.GET)
