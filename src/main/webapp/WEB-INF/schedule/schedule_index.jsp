@@ -84,14 +84,6 @@
 </head>
 <body>
 <div class="page">
-	<c:forEach var="schedule" items="${schedulelist}">
-		${schedule.schedule_no}
-		${schedule.schedule_title}
-		${schedule.schedule_location}
-		${schedule.schedule_memo}
-		${schedule.alarm_flag}
-		${schedule.id}
-	</c:forEach>
 		<h2 style="text-align: center;">나의 스케줄 확인</h2>
 		<div style="text-align: center;">
 			<div style="width:100%; max-width:600px; display:inline-block; text-align: center;">

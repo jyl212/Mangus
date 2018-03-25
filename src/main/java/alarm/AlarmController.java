@@ -29,7 +29,7 @@ public class AlarmController {
 	@RequestMapping(value = "/alarm/insert.do", method=RequestMethod.POST)
 	public String insert(AlarmVO alarm) {
 		int result=service.alarmInsert(alarm);
-		System.out.println(result);
+
 		if(result==1) {
 			return "redirect:../alarm/index.do";
 		}
@@ -37,9 +37,9 @@ public class AlarmController {
 	}
 	@RequestMapping(value = "/alarm/update.do", method=RequestMethod.POST)
 	public String update(AlarmVO alarm) {
-		System.out.println(alarm);
+
 		int result=service.alarmUpdate(alarm);
-		System.out.println(result);
+
 		if(result==1) {
 			return "redirect:../alarm/index.do";
 		}

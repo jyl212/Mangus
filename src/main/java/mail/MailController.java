@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import authentication.SecurityLoginDTO;
 import member.MemberVO;
 
 @Controller
@@ -21,6 +22,7 @@ public class MailController {
 	@RequestMapping("/mail/send.do")
 	public String send(MailVO mail,@RequestParam String userpassword,@RequestParam String userid) {
 		String seq=userid+(Integer.parseInt(service.getCount(userid))+1);
+		System.out.println(seq);
 		String result=logic.sendMail(mail.getSender(),mail.getReceiver(),mail.getTitle(),mail.getText(),userpassword,seq);
 		MailVO2 data=new MailVO2(mail.getReceiver(),mail.getTitle(),mail.getText(),userid,"N","읽지 않음",seq);
 		int dbresult=service.send(data);
@@ -30,11 +32,15 @@ public class MailController {
 		return "mail/mailOk";
 	}
 	@RequestMapping("/mail/index.do")
-	public String index() {
-		return "mail";
+	public ModelAndView index(String rev) {
+		ModelAndView mav=new ModelAndView();
+		mav.addObject("rev",rev);
+		mav.setViewName("mail");
+		return mav;
 	}
 	@RequestMapping("/mail/mailOpenCheck.do")
 	public void mailCheck(@RequestParam String seq) {
+		System.out.println("test");
 		if(service.getread(seq).equals("N")) {
 			int result=service.update(seq);
 		}
@@ -43,7 +49,7 @@ public class MailController {
 	public ModelAndView mailList(HttpServletRequest request) {
 		HttpSession session=request.getSession();
 		ModelAndView mav=new ModelAndView();
-		MemberVO member=(MemberVO)session.getAttribute("user");
+		SecurityLoginDTO member=(SecurityLoginDTO)session.getAttribute("user");
 		mav.addObject("list",service.list(member.getId()));
 		mav.setViewName("mail/sendlist");
 		return mav;
@@ -55,5 +61,13 @@ public class MailController {
 			return "redirect:/mail/mailList.do";
 		}
 		return "mail/deleteFail";
+	}
+	@RequestMapping("/mail/read.do")
+	public ModelAndView mailRead(@RequestParam String mail_seq) {
+		ModelAndView mav=new ModelAndView();
+		MailVO2 data=service.read(mail_seq);
+		mav.addObject("mail",data);
+		mav.setViewName("mail/read");
+		return mav;
 	}
 }

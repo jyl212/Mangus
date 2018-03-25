@@ -1,4 +1,4 @@
-package member;
+package authentication;
 
 import java.util.Collection;
 
@@ -7,7 +7,7 @@ import org.springframework.security.core.userdetails.User;
 
 public class SecurityLoginDTO extends User{
 	String id;
-	String password;
+	String pass;
 	String name;
 	String address;
 	String mail;
@@ -15,17 +15,18 @@ public class SecurityLoginDTO extends User{
 	String phone;
 	String gender;
 	String role;
+	String encpass;
 	
-	public SecurityLoginDTO(String id, String password, boolean enabled, boolean accountNonExpired,
+	public SecurityLoginDTO(String id, String encpass, boolean enabled, boolean accountNonExpired,
 			boolean credentialsNonExpired, boolean accountNonLocked,
 			Collection<? extends GrantedAuthority> authorities) {
-		super(id, password, enabled, accountNonExpired, credentialsNonExpired, accountNonLocked, authorities);
+		super(id, encpass, enabled, accountNonExpired, credentialsNonExpired, accountNonLocked, authorities);
 	}
-	public SecurityLoginDTO(String id, String password, boolean enabled, boolean accountNonExpired,
+	public SecurityLoginDTO(String id, String encpass, boolean enabled, boolean accountNonExpired,
 			boolean credentialsNonExpired, boolean accountNonLocked,
 			Collection<? extends GrantedAuthority> authorities,String name, String address, String mail, String birth, String phone,
-			String gender,String role) {
-		super(id, password, enabled, accountNonExpired, credentialsNonExpired, accountNonLocked, authorities);
+			String gender,String role,String pass) {
+		super(id, encpass, enabled, accountNonExpired, credentialsNonExpired, accountNonLocked, authorities);
 		this.name = name;
 		this.address = address;
 		this.mail = mail;
@@ -33,6 +34,7 @@ public class SecurityLoginDTO extends User{
 		this.phone = phone;
 		this.gender = gender;
 		this.role=role;
+		this.pass=pass;
 		System.out.println("작업완료");
 	}
 	public String getId() {
@@ -41,11 +43,11 @@ public class SecurityLoginDTO extends User{
 	public void setId(String id) {
 		this.id = id;
 	}
-	public String getPassword() {
-		return password;
+	public String getPass() {
+		return pass;
 	}
-	public void setPassword(String password) {
-		this.password = password;
+	public void setPass(String pass) {
+		this.pass = pass;
 	}
 	public String getName() {
 		return name;
@@ -91,8 +93,8 @@ public class SecurityLoginDTO extends User{
 	}
 	@Override
 	public String toString() {
-		return "MemberVO [id=" + id + ", password=" + password + ", name=" + name + ", address=" + address +", mail=" + mail + ", birth="
-				+ birth + ", phone=" + phone + ", gender=" + gender + "role="+role+"]";
+		return "MemberVO [id=" + id + ", pass=" + pass + ", name=" + name + ", address=" + address +", mail=" + mail + ", birth="
+				+ birth + ", phone=" + phone + ", gender=" + gender + ", role="+role+ ", encpass=" + encpass+"]";
 	}
 	
 }

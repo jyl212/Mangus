@@ -53,4 +53,9 @@ public class MailDAOImpl implements MailDAO{
 		return session.selectOne("springProject.mail.readch",seq);
 	}
 
+	@Override
+	public MailVO2 read(String mail_seq) {
+		return session.selectOne("springProject.mail.read",mail_seq);
+	}
+
 }

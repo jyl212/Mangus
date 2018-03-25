@@ -9,4 +9,5 @@ public interface MailDAO {
 	int update(String seq);
 	String getCount(String id);
 	String getread(String seq);
+	MailVO2 read(String mail_seq);
 }

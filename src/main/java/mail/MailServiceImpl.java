@@ -40,4 +40,9 @@ public class MailServiceImpl implements MailService{
 	public String getread(String seq) {
 		return dao.getread(seq);
 	}
+
+	@Override
+	public MailVO2 read(String mail_seq) {
+		return dao.read(mail_seq);
+	}
 }

@@ -15,13 +15,6 @@
 <script type="text/javascript">
 	$(window).load( function() {
 
-		$('#mycalendar').monthly({
-			mode: 'event',
-			jsonUrl: '/springProject/resources/json/events1.json',
-			dataType: 'json'
-		//	xmlUrl: '/springProject/resources/xml/events.xml'
-		});
-
 		$('#mycalendar2').monthly({
 			mode: 'picker',
 			target: '#mytarget',
@@ -92,7 +85,9 @@
 	}
 	function colorselect(color){
 		$("#color").val(color)
-
+	//	sBtn.removeClass("active");
+	//	$(".colorselect1").parent().addClass("active");
+	//	$(".colorselect1").toggle("active");
 	}
 	function setPath(url) {
 		location.href = "/springProject/schedule/index.do";
@@ -114,7 +109,7 @@
 <div class="col-md-12 col-sm-12 col-xs-12" >
 <form action="/springProject/schedule/insert.do" id="schedule_insert_form"
 									name="schedule_insert_form" method="post" accept-charset="utf-8">
-	<h2 style="text-align: center; height: 50px; margin-bottom: 20px">스케줄 등록</h2>
+	<h2 style="text-align: center; height: 50px; margin-bottom: 20px">스케줄 수정</h2>
 	<div class="col-md-1 col-sm-1 col-xs-1 oneline-conftrol"></div>
 	<div class="col-md-2 col-sm-2 col-xs-2 oneline-conftrol online-lab">
 
@@ -123,7 +118,7 @@
 	</div>
     <div class="col-md-8 col-sm-8 col-xs-8 oneline-conftrol">
 
-    		<input type="text" class="form-control" name="schedule_title">
+    		<input type="text" class="form-control" name="schedule_title" value="${scheduleinfo.schedule_title}">
 
     </div>
 	<div class="col-md-1 col-sm-1 col-xs-1 oneline-conftrol" ></div>
@@ -136,7 +131,7 @@
 	</div>
     <div class="col-md-8 col-sm-8 col-xs-8 oneline-conftrol">
 
-    		<input type="text" class="form-control" name="schedule_location">
+    		<input type="text" class="form-control" name="schedule_location" value="${scheduleinfo.schedule_location}">
 
     </div>
 	<div class="col-md-1 col-sm-1 col-xs-1 oneline-conftrol" ></div>
@@ -153,7 +148,7 @@
     			<label style="padding-top: 8px" >시작일시</label>
     		</div>
     		<div class="col-md-4 col-sm-4 col-xs-4" style="">
-			<input type="text" class="form-control"  id="mytarget" value="Select Date" name="cal1">
+			<input type="text" class="form-control"  id="mytarget" value="${startdate}" name="cal1">
 			<div class="monthly" id="mycalendar2" style="z-index: 2"></div>
 			</div>
 			<div class="col-md-2 col-sm-2 col-xs-2 no-mg-no-pd" style="">
@@ -161,10 +156,18 @@
 					<c:forEach var="i" begin="1" end="24" step="1">
 						<c:choose>
 						<c:when test="${i<10 }">
-						<option>0${i}시</option>
+						<option
+						<c:if test="${'0'+i==startoclock}">
+						selected="selected"
+						</c:if>
+						>0${i}시</option>
 						</c:when>
 						<c:otherwise>
-						<option>${i}시</option>
+						<option
+						<c:if test="${i==startoclock}">
+						selected="selected"
+						</c:if>
+						>${i}시</option>
 						</c:otherwise>
 						</c:choose>
 					</c:forEach>			
@@ -175,10 +178,18 @@
 						 <c:forEach var="j" begin="0" end="59" step="5">
 							<c:choose>
 							<c:when test="${j<10 }">
-							<option>0${j}분</option>
+							<option
+							<c:if test="${'0'+j==startminute}">
+							selected="selected"
+							</c:if>
+							>0${j}분</option>
 							</c:when>
 							<c:otherwise>
-							<option>${j}분</option>
+							<option
+							<c:if test="${j==startminute}">
+							selected="selected"
+							</c:if>
+							>${j}분</option>
 							</c:otherwise>
 							</c:choose>
 						 </c:forEach>				
@@ -189,7 +200,7 @@
     			<label style="padding-top: 8px">종료일시</label>
     		</div>
 			<div class="col-md-4 col-sm-4 col-xs-4 " >
-			<input type="text" class="form-control"  id="mytarget1" value="Select Date" name="cal2">
+			<input type="text" class="form-control"  id="mytarget1" value="${enddate}" name="cal2">
 			<div class="monthly1" id="mycalendar1" style="z-index: 2"></div>
 			</div>
 			<div class="col-md-2 col-sm-2 col-xs-2 no-mg-no-pd">
@@ -197,10 +208,18 @@
 					<c:forEach var="i" begin="1" end="23" step="1">
 						<c:choose>
 						<c:when test="${i<10 }">
-						<option>0${i}시</option>
+						<option
+						<c:if test="${'0'+i==endoclock}">
+							selected="selected"
+						</c:if>
+						>0${i}시</option>
 						</c:when>
 						<c:otherwise>
-						<option>${i}시</option>
+						<option
+						<c:if test="${i==endoclock}">
+							selected="selected"
+						</c:if>
+						>${i}시</option>
 						</c:otherwise>
 						</c:choose>
 					</c:forEach>			
@@ -212,10 +231,18 @@
 						 <c:forEach var="j" begin="0" end="59" step="5">
 							<c:choose>
 							<c:when test="${j<10 }">
-							<option>0${j}분</option>
+							<option
+							<c:if test="${'0'+j==endminute}">
+							selected="selected"
+							</c:if>
+							>0${j}분</option>
 							</c:when>
 							<c:otherwise>
-							<option>${j}분</option>
+							<option
+							<c:if test="${j==endminute}">
+							selected="selected"
+							</c:if>
+							>${j}분</option>
 							</c:otherwise>
 							</c:choose>
 						 </c:forEach>				
@@ -236,7 +263,7 @@
     <div class="col-md-8 col-sm-8 col-xs-8 mb mt" style="height: 70px">
 
     		<textarea style="width: 100%; border: 1; overflow: visible; text-overflow: ellipsis;"
-								rows=4 name="schedule_memo"></textarea>
+								rows=4 name="schedule_memo" >${scheduleinfo.schedule_memo}</textarea>
 
     </div>
 	<div class="col-md-1 col-sm-1 col-xs-1 mb mt" style="height: 70px" ></div>
@@ -248,9 +275,12 @@
 
 	</div>
 	<div class="col-md-8 col-sm-8 col-xs-8 oneline-conftrol" style="text-align: left;">
-		<div style="z-index: 2" class="switch switch-square" data-on-label="on" 
-										  data-off-label="off">
-        	<input style="z-index: 1" type="checkbox" name="alarmType" value="Y"/>
+		<div style="z-index: 2" class="switch switch-square" data-on-label="on" data-off-label="off">
+        	<input style="z-index: 1" type="checkbox" name="alarmType" value="Y"
+        	<c:if test="${scheduleinfo.alarm_flag=='Y,'}">
+        	checked="checked"
+        	</c:if>
+        	/>
         	<input type="hidden" id="alarm_flag" name="alarm_flag">
         	<input type="hidden" id="id" name="id" value="kind">
         	<input type="hidden" id="startdate" name="startdate">
@@ -275,7 +305,7 @@
 	
 		<div class="col-md-4 col-sm-4 col-xs-4 text-center"></div>
 		<div class="col-md-2 col-sm-2 col-xs-2 text-center">
-			<input type="button" class="btn btn-success"	style="width: 100px; " onclick="scheduleInsert()" value="작성완료">
+			<input type="button" class="btn btn-success"	style="width: 100px; " onclick="scheduleInsert()" value="수정완료">
 		</div>
 		<div class="col-md-2 col-sm-2 col-xs-2 text-center">
 			<button type="reset" class="btn btn-default"

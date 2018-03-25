@@ -33,13 +33,14 @@ public class ScheduleController {
 		
 		JSONObject root = new JSONObject();
 		JSONArray montlyArray = new JSONArray();
-		String url = "/springProject/schedule/index.do"; 
+		String url = "/springProject/schedule/update.do"; 
 		for (int i = 0; i < size; i++) {
 			JSONObject montlyInfo = new JSONObject();
 			schedule = schedulelist.get(i);
-			System.out.println(schedule.getSchedule_no());
 			montlyInfo.put("id", schedule.getSchedule_no());
 			montlyInfo.put("name", schedule.getSchedule_title());
+			montlyInfo.put("location", schedule.getSchedule_location());
+			montlyInfo.put("memo", schedule.getSchedule_memo());
 			montlyInfo.put("startdate", schedule.getStartdate());
 			montlyInfo.put("enddate", schedule.getEnddate());
 			montlyInfo.put("starttime", schedule.getStarttime());
@@ -81,5 +82,37 @@ public class ScheduleController {
 		mav.setViewName("schedule/insert");
 		return mav;
 	}
-	
+	@RequestMapping(value ="/schedule/update.do", method=RequestMethod.GET)
+	public ModelAndView updateinfoView(@RequestParam int schedule_no) {
+		ScheduleVO scheduleinfo = service.scheduleInfo(schedule_no);
+		
+		scheduleinfo.getStarttime();
+		scheduleinfo.getEndtime();
+		String[] start1 = scheduleinfo.getStartdate().split("-");
+		String[] end1 = scheduleinfo.getEnddate().split("-");
+		String startdate = start1[0]+"년 "+start1[1]+"월 "+start1[2]+"일";
+		String enddate = end1[0]+"년 "+end1[1]+"월 "+end1[2]+"일";
+		String[] start2 = scheduleinfo.getEndtime().split(":");
+		String[] end2 = scheduleinfo.getStarttime().split(":");
+		String startoclock = start2[0];
+		String startminute = start2[1];
+		String endoclock = end2[0];
+		String endminute = end2[1];
+		ModelAndView mav=new ModelAndView();
+		mav.addObject("startoclock", startoclock);
+		mav.addObject("startminute", startminute);
+		mav.addObject("endoclock", endoclock);
+		mav.addObject("enddate", enddate);
+		mav.addObject("endminute", endminute);
+		mav.addObject("startdate", startdate);
+		mav.addObject("scheduleinfo",scheduleinfo);
+		mav.setViewName("schedule/update");
+		return mav;
+	}
+	@RequestMapping(value ="/schedule/update.do", method=RequestMethod.POST)
+	public ModelAndView updateinsertView() {
+		ModelAndView mav=new ModelAndView();
+		mav.setViewName("redirect:../schedule/index.do");
+		return mav;
+	}
 }

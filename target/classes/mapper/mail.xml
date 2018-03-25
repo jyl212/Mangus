@@ -20,4 +20,7 @@
  	<select id="readch" parameterType="String" resultType="String">
  		select read from send_mail where mail_seq=#{seq}
  	</select>
+ 	<select id="read" parameterType="String" resultType="mail">
+ 		select * from send_mail where mail_seq=#{mail_seq}
+ 	</select>
  </mapper>
