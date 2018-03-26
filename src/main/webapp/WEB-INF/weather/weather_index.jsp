@@ -19,14 +19,15 @@
 		position:absolute;
 		top:0;
 		margin-top:3%;
-		margin-left:30%;
+		margin-left:12%;
 		left:0;
 		color:white;
 		font-weight:900;
+		width: 80%;
 	}
 	#child2{
 		position:absolute;
-		top:25%;
+		top:21%;
 		left:15%;
 		color:white;
 		font-weight:900;
@@ -34,7 +35,7 @@
 	}
 	#child3{
 		position:absolute;
-		top:40%;
+		top:38%;
 		left:15%;
 		color:white;
 		font-weight:900;
