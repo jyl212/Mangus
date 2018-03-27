@@ -160,15 +160,15 @@
 				</div>
 			</div>
 			<div class="row fw11" style="margin: 30px;">
-				<div class="col-md-3 fw11">
+				<div class="col-md-3 fw11" style="color:white;">
 					<img src="/springProject/resources/weather/thermometer.PNG"
 						style="width: 200px; height: 200px; left: 220px;">
 					<div class="row">
 						<h3>체감온도</h3>
-						<h4>${wct}</h4>
+						<h4>${fn:split(wct,'.')[0]}º</h4>
 					</div>
 				</div>
-				<div class="col-md-3 fw11">
+				<div class="col-md-3 fw11" style="color:white;">
 					<img src="/springProject/resources/weather/uv.PNG"
 						style="width: 200px; height: 200px; left: 220px;">
 					<div class="row">
@@ -176,7 +176,7 @@
 						<h4>${uv}</h4>
 					</div>
 				</div>
-				<div class="col-md-3 fw11">
+				<div class="col-md-3 fw11" style="color:white;">
 					<img src="/springProject/resources/weather/laundry.PNG"
 						style="width: 200px; height: 200px; left: 220px;">
 					<div class="row">
@@ -184,7 +184,7 @@
 						<h4>${lun}</h4>
 					</div>
 				</div>
-				<div class="col-md-3 fw11">
+				<div class="col-md-3 fw11" style="color:white;">
 					<c:choose>
 						<c:when test="${th<68}">
 							<c:set var="src" value="low.PNG"></c:set>
