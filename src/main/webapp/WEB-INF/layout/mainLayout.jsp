@@ -12,8 +12,6 @@
 <script type="text/javascript"	src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 <script type="text/javascript"	src="//netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 <style>
-
-
 #outer {
 	width: 95%;
 	margin-left: auto;
