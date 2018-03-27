@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE>
 <html>
 <head>
@@ -8,6 +10,7 @@
 <title>My PA</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="/springProject/resources/assets/css/style.css">
 <script type="text/javascript"
 	src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script
@@ -114,18 +117,29 @@
 	<div class="section">
 		<div class="container">
 			<div class="row">
-				<div class="col-md-6">
-					<h1>일정</h1>
-					<img
-						src="//pingendo.github.io/pingendo-bootstrap/assets/placeholder.png"
-						class="img-responsive">
-					<p></p>
+				<div class="col-md-6" >
+					<h1>오늘의 일정</h1>
+					<c:forEach var="schedule" items="${todayschedule}">
 					<p>
-						Lorem ipsum dolor sit amet, consectetur adipisici elit, <br>sed
-						eiusmod tempor incidunt ut labore et dolore magna aliqua. <br>Ut
-						enim ad minim veniam, quis nostrud
+						${schedule.schedule_title}
+						<br>${schedule.startdate} ${schedule.starttime} 
+						<br>${schedule.schedule_memo}
 					</p>
-					<p></p>
+						<div class="col-lg-4 col-md-4 col-sm-4 mb">
+							<div class="content-panel pn">
+								<div id="profile-02">
+									<div class="user">
+										<h4>DJ SHERMAN</h4>
+									</div>
+								</div>
+								<div class="pr2-social centered">
+									<a href="#"><i class="fa fa-twitter"></i></a>
+									<a href="#"><i class="fa fa-facebook"></i></a>
+									<a href="#"><i class="fa fa-dribbble"></i></a>
+								</div>
+							</div><! --/panel -->
+						</div><!--/ col-md-4 -->
+					</c:forEach>
 				</div>
 				<div class="col-md-6">
 					<h1>오늘의 음악</h1>
