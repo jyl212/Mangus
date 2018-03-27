@@ -101,7 +101,7 @@
 							<h4>내일</h4>
 							<h4>${info.namelist[7]}</h4>
 							<h4>${fn:split(info.daysmaxtemp[0],'.')[0]}º/${fn:split(info.daysmintemp[0],'.')[0]}º</h4>
-							<h4><img src="/springProject/resources/weather/wind_speed.png" style="width:30px;height:30px;float:left;">${info.wspdlist[7]}m/s</h4>
+							<h4><img src="/springProject/resources/wenather/wind_speed.png" style="width:30px;height:30px;float:left;">${info.wspdlist[7]}m/s</h4>
 						</div>
 						<div class="col-md-4 fw11">
 							<img src="/springProject/resources/weather/${info.imglist[15]}"
@@ -160,15 +160,15 @@
 				</div>
 			</div>
 			<div class="row fw11" style="margin: 30px;">
-				<div class="col-md-3 fw11" style="color:white;">
+				<div class="col-md-3 fw11">
 					<img src="/springProject/resources/weather/thermometer.PNG"
 						style="width: 200px; height: 200px; left: 220px;">
 					<div class="row">
 						<h3>체감온도</h3>
-						<h4>${fn:split(wct,'.')[0]}º</h4>
+						<h4>${wct}</h4>
 					</div>
 				</div>
-				<div class="col-md-3 fw11" style="color:white;">
+				<div class="col-md-3 fw11">
 					<img src="/springProject/resources/weather/uv.PNG"
 						style="width: 200px; height: 200px; left: 220px;">
 					<div class="row">
@@ -176,7 +176,7 @@
 						<h4>${uv}</h4>
 					</div>
 				</div>
-				<div class="col-md-3 fw11" style="color:white;">
+				<div class="col-md-3 fw11">
 					<img src="/springProject/resources/weather/laundry.PNG"
 						style="width: 200px; height: 200px; left: 220px;">
 					<div class="row">
@@ -184,7 +184,7 @@
 						<h4>${lun}</h4>
 					</div>
 				</div>
-				<div class="col-md-3 fw11" style="color:white;">
+				<div class="col-md-3 fw11">
 					<c:choose>
 						<c:when test="${th<68}">
 							<c:set var="src" value="low.PNG"></c:set>
