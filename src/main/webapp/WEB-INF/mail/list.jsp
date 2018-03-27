@@ -8,6 +8,9 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<div class="row">
+	<div class="col-md-1"></div>
+	<div class="col-md-10" style="margin-top:10px;">
 	<table class="table">
 		<thead>
 			<tr>
@@ -16,6 +19,7 @@
 				<th>메일제목</th>
 				<th>보낸 날짜</th>
 				<th>수신확인</th>
+				<th></th>
 			</tr>
 		</thead>
 		<tbody>
@@ -40,5 +44,8 @@
 			</c:forEach>
 		</tbody>
 	</table>
+	</div>
+	<div class="col-md-1"></div>
+	</div>
 </body>
 </html>

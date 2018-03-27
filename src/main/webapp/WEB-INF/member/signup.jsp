@@ -13,7 +13,6 @@
 <script type="text/javascript">
 	$(document).ready(function() {
 		$("#checkid").on("click", function() {
-			alert("test");
 			$.ajax({
 				async : true,
 				url : "/springProject/member/idcheck.do",
@@ -45,7 +44,6 @@
 		}).open();
 	}
 	function success_run(data) {
-		alert("test");
 		if(data==0){
 			$("#mem_id_text").text("이미 사용중인 id 입니다.");
 		}else{
