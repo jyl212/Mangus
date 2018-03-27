@@ -11,4 +11,8 @@
 	<select id="selectvo" resultType="schedule" parameterType="Integer">
 		select * from schedule where schedule_no=#{schedule_no}
 	</select>
+	<update id="update" parameterType="Integer">
+		update schedule set schedule_title = #{schedule_title}, schedule_location = #{schedule_location}, schedule_memo = #{schedule_memo}, alarm_flag = #{alarm_flag}
+		, startdate = #{startdate}, starttime = #{starttime}, enddate = #{enddate}, endtime = #{endtime}, color = #{color} where schedule_no= #{schedule_no}
+	</update>
  </mapper>

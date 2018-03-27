@@ -99,6 +99,7 @@ public class ScheduleController {
 		String endoclock = end2[0];
 		String endminute = end2[1];
 		ModelAndView mav=new ModelAndView();
+		mav.addObject("schedule_no",schedule_no);
 		mav.addObject("startoclock", startoclock);
 		mav.addObject("startminute", startminute);
 		mav.addObject("endoclock", endoclock);
@@ -110,9 +111,15 @@ public class ScheduleController {
 		return mav;
 	}
 	@RequestMapping(value ="/schedule/update.do", method=RequestMethod.POST)
-	public ModelAndView updateinsertView() {
+	public ModelAndView updateinsertView(ScheduleVO schedule) {
 		ModelAndView mav=new ModelAndView();
-		mav.setViewName("redirect:../schedule/index.do");
+		int result=service.scheduleUpdate(schedule);
+		if(result==0) {
+			
+		}else {
+			mav.setViewName("redirect:../schedule/index.do");
+		}
+		
 		return mav;
 	}
 }

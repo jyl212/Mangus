@@ -42,7 +42,9 @@ public class AlarmController {
 
 		if(result==1) {
 			return "redirect:../alarm/index.do";
+		}else {
+			return "redirect:../alarm/index.do";
 		}
-		return "redirect:../alarm/index.do";
+		
 	}
 }

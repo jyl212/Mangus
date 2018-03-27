@@ -5,6 +5,12 @@
 <!DOCTYPE>
 <html>
 <head>
+<link href="/springProject/resources/assets/css/style-responsive.css" rel="stylesheet">
+<link rel="stylesheet" href="/springProject/resources/assets/css/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/css/bootstrap-datepicker3.min.css">
+<script type="text/javascript" src="/springProject/resources/assets/js/jquery.backstretch.min.js"></script>
+<script type='text/javascript' src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.min.js"></script>
+<script type="text/javascript" src="/springProject/resources/assets/js/bootstrap-switch.js"></script>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -53,13 +59,14 @@
 		font-weight:900px;
 	}
 </style>
+
 </head>
 <body>
 	<div class="section">
 		<div class="container">
 			<div class="row fw11" style="margin: 30px;">
 				<div class="col-md-12" id="parent">
-					<img src="/springProject/resources/weather/background.jpg" style="width:100%;height:50%;opacity:0.7;"/>
+					<img src="/springProject/resources/weather/dlwndud.png" style="width:100%;height:50%;opacity:0.0;"/>
 					<div class="row fw11" id="child">
 						<div class="col-md-4 fw11">
 							<img src="/springProject/resources/weather/${today.img}"
@@ -112,42 +119,42 @@
 				<div class="col-md-2 fw11">
 					<h4>3시간 후</h4>
 					<img src="/springProject/resources/weather/${info.imglist[0]}"
-						style="width: 30px; height: 30px; left: 30px;">
+						style="width: 50px; height: 50px; left: 30px;">
 					<h5>${info.namelist[0]}</h5>
 					<h5>${fn:split(info.templist[0],'.')[0]}º / ${info.wspdlist[0]}m/s</h5>
 				</div>
 				<div class="col-md-2 fw11">
 					<h4>6시간 후</h4>
 					<img src="/springProject/resources/weather/${info.imglist[1]}"
-						style="width: 30px; height: 30px; left: 30px;">
+						style="width: 50px; height: 50px; left: 30px;">
 					<h5>${info.namelist[1]}</h5>
 					<h5>${fn:split(info.templist[1],'.')[0]}º / ${info.wspdlist[1]}m/s</h5>
 				</div>
 				<div class="col-md-2 fw11">
 					<h4>9시간 후</h4>
 					<img src="/springProject/resources/weather/${info.imglist[2]}"
-						style="width: 30px; height: 30px; left: 30px;">
+						style="width: 50px; height: 50px; left: 30px;">
 					<h5>${info.namelist[2]}</h5>
 					<h5>${fn:split(info.templist[2],'.')[0]}º / ${info.wspdlist[2]}m/s</h5>
 				</div>
 				<div class="col-md-2 fw11">
 					<h4>12시간 후</h4>
 					<img src="/springProject/resources/weather/${info.imglist[3]}"
-						style="width: 30px; height: 30px; left: 30px;">
+						style="width: 50px; height: 50px; left: 30px;">
 					<h5>${info.namelist[3]}</h5>
 					<h5>${fn:split(info.templist[3],'.')[0]}º / ${info.wspdlist[3]}m/s</h5>
 				</div>
 				<div class="col-md-2 fw11">
 					<h4>15시간 후</h4>
 					<img src="/springProject/resources/weather/${info.imglist[4]}"
-						style="width: 30px; height: 30px; left: 30px;">
+						style="width: 50px; height: 50px; left: 30px;">
 					<h5>${info.namelist[4]}</h5>
 					<h5>${fn:split(info.templist[4],'.')[0]}º / ${info.wspdlist[4]}m/s</h5>
 				</div>
 				<div class="col-md-2 fw11">
 					<h4>18시간 후</h4>
 					<img src="/springProject/resources/weather/${info.imglist[5]}"
-						style="width: 30px; height: 30px; left: 30px;">
+						style="width: 50px; height: 50px; left: 30px;">
 					<h5>${info.namelist[5]}</h5>
 					<h5>${fn:split(info.templist[5],'.')[0]}º / ${info.wspdlist[5]}m/s</h5>
 				</div>
@@ -207,4 +214,8 @@
 		</div>
 	</div>
 </body>
+
+	<script>
+        $.backstretch("/springProject/resources/weather/dlwndud.png", {speed: 500});
+    </script>
 </html>
