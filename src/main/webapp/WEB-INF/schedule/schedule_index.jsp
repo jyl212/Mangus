@@ -5,6 +5,10 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/css/bootstrap-datepicker3.min.css">
+<script type="text/javascript" src="/springProject/resources/assets/js/jquery.backstretch.min.js"></script>
+<script type='text/javascript' src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.min.js"></script>
+<script type="text/javascript" src="/springProject/resources/assets/js/bootstrap-switch.js"></script>
 <meta content="text/html; charset=UTF-8">
 
     <title>스케쥴</title>
@@ -76,6 +80,9 @@
 	</style>
 	<link rel="stylesheet" href="/springProject/resources/assets/css/monthly.css">
 	<script type="text/javascript">
+	$.backstretch("/springProject/resources/assets/images/profile-02.jpg", {speed: 500});
+	</script>
+	<script type="text/javascript">
 	function insertPath() {
 
 		location.href = "/springProject/schedule/insert.do";
@@ -137,6 +144,7 @@
 	}
 
 	});
+	
 </script>
 </body>
 </html>
