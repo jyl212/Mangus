@@ -9,6 +9,7 @@
 		<typeAlias type="sms.GroupVO" alias="group"/>
 		<typeAlias type="sms.PhoneVO" alias="phone"/>
 		<typeAlias type="schedule.ScheduleVO" alias="schedule" />
+		<typeAlias type="music.MusicVO" alias="music"/>
 	</typeAliases>
 	<mappers>
 		<mapper resource="mapper/member.xml" />
@@ -16,5 +17,6 @@
 		<mapper resource="mapper/mail.xml" />
 		<mapper resource="mapper/sms.xml" />
 		<mapper resource="mapper/schedule.xml" />
+		<mapper resource="mapper/music.xml" />
 	</mappers>
 </configuration>

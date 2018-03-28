@@ -70,6 +70,11 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
+		<!-- ==================파일업로드====================================== -->
+	<beans:bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<beans:property name="maxUploadSize" value="150000000"/>
+	</beans:bean>
 	
 	<context:component-scan base-package="kr.kitri.springProject" />
 	
