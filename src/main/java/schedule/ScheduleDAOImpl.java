@@ -1,6 +1,8 @@
 package schedule;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +33,14 @@ public class ScheduleDAOImpl implements ScheduleDAO {
 
 	@Override
 	public int scheduleUpdate(ScheduleVO schedule) {
-		System.out.println(schedule);
 		return session.update("springProject.schedule.update",schedule);
+	}
+
+	@Override
+	public List<ScheduleVO> todayschedule(String mTime,String id) {
+		Map<String, String> value = new HashMap<String,String>();
+		value.put("mTime", mTime);
+		value.put("id", id);
+		return session.selectList("springProject.schedule.todayList",value);
 	}
 }

@@ -93,17 +93,17 @@
 		
 		<div class="col-md-2 col-sm-2 col-xs-2 oneline-conftrol"></div>
 		<div class="col-md-8 col-sm-8 col-xs-8 form-group" id="idbox">
-			<div class="col-md-6 col-sm-6 col-xs-6 centered">
+			<div class="col-md-6 col-sm-6 col-xs-6 centered" style="height:40px; ">
 				<input type="text" class="form-control" id="id" name="id"
 					placeholder="아이디">
+				<label id="mem_id_text"></label>
 			</div>
 			<div class="col-md-6 col-sm-6 col-xs-6" style="text-align: left;">
 				<button type="button" class="btn btn-info" id="checkid">중복확인</button>
 			</div>
-			<label id="mem_id_text"></label>
+			
 		</div>
 		<div class="col-md-2 col-sm-2 col-xs-2 oneline-conftrol"> </div>
-		
 		
 		<div class="col-md-2 col-sm-2 col-xs-2 oneline-conftrol"></div>
 		<div class="col-md-8 col-sm-8 col-xs-8 form-group" id="passbox">
