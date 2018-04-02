@@ -34,7 +34,6 @@ public class MemberController {
 	}
 	@RequestMapping(value="/member/login",method=RequestMethod.GET)
 	public String login() {
-		System.out.println("로그인.....");
 		return "/member/login";
 	}
 	@RequestMapping(value="/member/idcheck.do",method=RequestMethod.GET)
@@ -51,7 +50,6 @@ public class MemberController {
 	}
 	@RequestMapping("/member/register.do")
 	public String Register(MemberVO member) {
-		System.out.println(member);
 		String dbpass=encoder.encodePassword(member.getPass(),null);
 		member.setEncpass(dbpass);
 		int result=service.register(member);

@@ -210,6 +210,13 @@
 		    <version>1.11.2</version>
 		</dependency>
 		
+		<!-- mahout -->
+		<dependency>
+			<groupId>org.apache.mahout</groupId>
+			<artifactId>mahout-core</artifactId>
+			<version>0.9</version>
+		</dependency>
+		
 		<!-- spring security -->
 		<dependency>
 			<groupId>org.springframework.security</groupId>

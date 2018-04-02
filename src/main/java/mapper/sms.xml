@@ -21,10 +21,10 @@
  	</insert>
  
  <!-- 삭제 -->
- 	<delete id="gDelete">
- 		delete from phone_group where title_code = #{title_code} cascade;
+ 	<delete id="gDelete" parameterType="String">
+ 		delete from phone_group where title_code = #{title_code} cascade
  	</delete>
- 	<delete id="pDelete">
+ 	<delete id="pDelete" parameterType="String">
  		delete from phonebook where phone = #{phone}
  	</delete>
 

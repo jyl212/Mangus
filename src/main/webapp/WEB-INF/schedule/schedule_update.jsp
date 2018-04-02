@@ -53,7 +53,7 @@
 </script>
 
 <script type="text/javascript">
-	function scheduleInsert(){
+	function scheduleUpdate(){
 		start_clok = $("select[name=schedule_start_clok]").val()
 		start_minute = $("select[name=schedule_start_minute]").val()
 		end_clok = $("select[name=schedule_end_clok]").val()
@@ -81,7 +81,7 @@
 			alarmty = "N";
 		}
 		$("#alarm_flag").val(alarmty)
-		$('#schedule_insert_form').submit();
+		$('#schedule_update_form').submit();
 	}
 	function colorselect(color){
 		$("#color").val(color)
@@ -107,8 +107,8 @@
 </head>
 <body>
 <div class="col-md-12 col-sm-12 col-xs-12" >
-<form action="/springProject/schedule/insert.do" id="schedule_insert_form"
-									name="schedule_insert_form" method="post" accept-charset="utf-8">
+<form action="/springProject/schedule/update.do" id="schedule_update_form"
+									name="schedule_update_form" method="post" accept-charset="utf-8">
 	<h2 style="text-align: center; height: 50px; margin-bottom: 20px">스케줄 수정</h2>
 	<div class="col-md-1 col-sm-1 col-xs-1 oneline-conftrol"></div>
 	<div class="col-md-2 col-sm-2 col-xs-2 oneline-conftrol online-lab">
@@ -289,6 +289,7 @@
 			<input type="hidden" id="endtime" name="endtime">
 			<input type="hidden" id="alarm_flag" name="alarm_flag">
 			<input type="hidden" id="color" name="color">
+			<input type="hidden" id="schedule_no" name="schedule_no" value="${schedule_no}">
         </div>
 	</div>
 	<div class="col-md-1 col-sm-1 col-xs-1 oneline-conftrol"></div>
@@ -305,7 +306,7 @@
 	
 		<div class="col-md-4 col-sm-4 col-xs-4 text-center"></div>
 		<div class="col-md-2 col-sm-2 col-xs-2 text-center">
-			<input type="button" class="btn btn-success"	style="width: 100px; " onclick="scheduleInsert()" value="수정완료">
+			<input type="button" class="btn btn-success"	style="width: 100px; " onclick="scheduleUpdate()" value="수정완료">
 		</div>
 		<div class="col-md-2 col-sm-2 col-xs-2 text-center">
 			<button type="reset" class="btn btn-default"

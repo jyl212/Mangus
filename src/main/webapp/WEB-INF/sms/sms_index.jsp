@@ -15,7 +15,6 @@
 
 <script type="text/javascript">
 $(function () {
-    /* BOOTSNIPP FULLSCREEN FIX */
     if (window.location == window.parent.location) {
         $('#back-to-bootsnipp').removeClass('hide');
     }

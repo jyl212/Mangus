@@ -22,7 +22,6 @@ public class MailController {
 	@RequestMapping("/mail/send.do")
 	public String send(MailVO mail,@RequestParam String userpassword,@RequestParam String userid) {
 		String seq=userid+(Integer.parseInt(service.getCount(userid))+1);
-		System.out.println(seq);
 		String result=logic.sendMail(mail.getSender(),mail.getReceiver(),mail.getTitle(),mail.getText(),userpassword,seq);
 		MailVO2 data=new MailVO2(mail.getReceiver(),mail.getTitle(),mail.getText(),userid,"N","읽지 않음",seq);
 		int dbresult=service.send(data);
@@ -40,7 +39,6 @@ public class MailController {
 	}
 	@RequestMapping("/mail/mailOpenCheck.do")
 	public void mailCheck(@RequestParam String seq) {
-		System.out.println("test");
 		if(service.getread(seq).equals("N")) {
 			int result=service.update(seq);
 		}

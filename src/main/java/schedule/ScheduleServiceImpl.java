@@ -27,5 +27,15 @@ public class ScheduleServiceImpl implements ScheduleService {
 		return dao.scheduleInfo(schedule_no);
 	}
 
+	@Override
+	public int scheduleUpdate(ScheduleVO schedule) {
+		return dao.scheduleUpdate(schedule);
+	}
+
+	@Override
+	public List<ScheduleVO> todayschedule(String mTime,String id) {
+		return dao.todayschedule(mTime,id);
+	}
+
 
 }
