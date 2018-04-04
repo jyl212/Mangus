@@ -86,8 +86,7 @@ public class SearchIndexController {
              sb = sb+line + "\n";  
             }  
             String path = resourceLoader.getResource("classpath:python").getURI().getPath();
-            System.out.println("path:"+path);
-			BufferedReader file = null;
+            BufferedReader file = null;
             if(sb.toString().contains("ok")) {
             	file = new BufferedReader(
             			new InputStreamReader(
@@ -101,15 +100,12 @@ public class SearchIndexController {
             		
             		if(count<10) {
             			list2.add(fileLine);
-            			System.out.println("list2=>"+count);
             		}
             		else {
             			list3.add(fileLine);
-            			System.out.println("list3=>"+count);
             			
             		}
             		count++;
-            		System.out.println("카운트=>"+count);
             		
             	}
             }
@@ -120,10 +116,7 @@ public class SearchIndexController {
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
-		System.out.println("리스트3=>"+list3.toString());
-		
-		
+		}		
 		
 		mav.addObject("searchlist2",list2);
 		mav.addObject("searchlist3",list3);
