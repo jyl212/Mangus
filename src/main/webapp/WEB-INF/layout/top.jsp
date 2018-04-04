@@ -35,11 +35,8 @@
         <li><a href="/springProject/schedule/index.do">일정</a></li>
         <li><a href="/springProject/music/index.do?id=${user.id}">음악</a></li>
         <li><a href="/springProject/traffic/index.do">교통</a></li>
-<<<<<<< HEAD
         <li><a href="/springProject/search/index.do">검색</a></li>
-=======
         <li><a href="/springProject/search/index.do?gender=${user.gender}&birth=${user.birth}">검색</a></li>
->>>>>>> branch 'master' of https://github.com/jyl212/Mangus.git
         <!-- <li><a href="/springProject/rasp.do">test</a></li> -->
         <li class=" dropdown">
             <a href="#" class="dropdown-toggle " data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">메일<span class="caret"></span></a>
