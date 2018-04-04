@@ -8,7 +8,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<h1>aaaa</h1>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="//rawgithub.com/stidges/jquery-searchable/master/dist/jquery.searchable-1.0.0.min.js"></script>
 <link href="/springProject/resources/music/music.css" rel="stylesheet" id="bootstrap-css">
