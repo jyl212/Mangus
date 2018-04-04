@@ -11,6 +11,7 @@
 		<security:intercept-url pattern="/mail/mailOpenCheck.do" access="permitAll" requires-channel="http"/>
 		<security:intercept-url pattern="/music/**" access="permitAll" requires-channel="http"/>
 		<security:intercept-url pattern="/mail/**" access="hasAnyRole('ROLE_USER','ROLE_ADMIN')"/>
+		<security:intercept-url pattern="/search/**" access="hasAnyRole('ROLE_USER')"/>
 		<security:intercept-url pattern="/**" access="permitAll" requires-channel="https"/>
 		<security:port-mappings>
 			<security:port-mapping http="8088" https="8443"/>
