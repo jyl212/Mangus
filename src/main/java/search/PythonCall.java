@@ -21,7 +21,7 @@ public class PythonCall {
 	@RequestMapping(value="/crawler.do",method=RequestMethod.GET)
 	public String callMycrawler(){
 		System.out.println("test");
-		String url = "http://127.0.0.1:5000/test";
+		String url = "http://127.0.0.1:5000/search";
 		 String sb="";  
 		try {
 			HttpURLConnection  conn = 
