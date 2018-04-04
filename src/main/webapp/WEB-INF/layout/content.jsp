@@ -116,8 +116,8 @@
 	</div>
 	<div class="section">
 		<div class="container">
-			<div class="row">
-				<div class="col-md-6" >
+			<div class="row" >
+				<div class="col-md-6" style="background-image: url('/springProject/resources/assets/images/profile-02.jpg'); background-repeat:no-repeat; background-size: 1500px; height: 500px ">
 					<h1>오늘의 일정</h1>
 					<c:forEach var="schedule" items="${todayschedule}">
 					<p>
@@ -125,7 +125,7 @@
 						<br>${schedule.startdate} ${schedule.starttime} 
 						<br>${schedule.schedule_memo}
 					</p>
-						<div class="col-lg-4 col-md-4 col-sm-4 mb">
+						<div class="col-lg-4 col-md-4 col-sm-4 mb" >
 							<div class="content-panel pn">
 								<div id="profile-02">
 									<div class="user">

@@ -24,7 +24,7 @@
 	<!-- <Valve className="org.apache.catalina.valves.CometConnectionManagerValve" 
 		/> -->
 	<Resource name="jdbc/myspring" auth="Container" type="javax.sql.DataSource"
-		driverClassName="oracle.jdbc.driver.OracleDriver" url="jdbc:oracle:thin:@192.168.0.10:1521:xe"
+		driverClassName="oracle.jdbc.driver.OracleDriver" url="jdbc:oracle:thin:@211.42.204.80:1521:xe"
 		username="mangus" password="mangus" maxTotal="20" maxIdle="10"
 		maxWaitMillis="-1" />
 </Context>
