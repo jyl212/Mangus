@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+		<div id="UploadBox">
+			<h2>Video Uploader</h2>
+			<span id='UploadArea'>
+				<label for="FileBox">Choose A File : </label><input type="file" id="FileBox"><br>
+				<label for="NameBox">Name : </label><input type="text" id="NameBox"><br>
+
+				<button type='button' id='UploadButton' class='Button'>Upload</button>
+			</span>
+		</div>
+		<table>
+			<tr>
+				<th>
+					이름
+				</th>
+				<th>
+					업로드 날짜
+				</th>
+				<th></th>
+			<tr>
+				<% if(filelist!=(null&&"")){
+					filelist.forEach(function(file){%>
+					<tr>
+						<td>
+							<a href="/piplay/play?id=<%=file._id%>"><%=file.filename %></a>
+						</td>
+						<td><%=file.uploadDate %></td>
+						<td>
+							<a href="/piplay/delete?id=<%=file._id%>">delete</a>
+						</td>
+					</tr>
+				<% });
+				} %>
+		</table>
+		<ul>
+			<a href="/piplay/volume?flag=U">Volume Up</a>
+			<a href="/piplay/volume?flag=D">Volume Down</a>
+			<a href="/piplay/pause">Pause</a>
+			<a href="/piplay/stop">Stop</a>
+			<a href="/piplay/next">Next</a>
+			<a href="/piplay/prev">Prev</a>
+		</ul>
+		<script src="/socket.io/socket.io.js"></script>
+		<script>
+			var socket=io();
+			
+			window.addEventListener("load",Ready);
+
+			function Ready(){
+				if(window.File && window.FileReader){
+					document.getElementById('UploadButton').addEventListener('click',StartUpload);
+					document.getElementById('FileBox').addEventListener('change',FileChosen);
+				} else {
+					document.getElementById('UploadArea').innerHTML="not surpoted brawser";
+				}
+			}
+
+			var SelectedFile;
+
+			function FileChosen(event){
+				SelectedFile = event.target.files[0];
+				document.getElementById('NameBox').value = SelectedFile.name;
+			}
+
+			var fileReader;
+			var Name;
+
+			function StartUpload(){
+				if(document.getElementById('FileBox').value != ""){
+					fileReader = new FileReader();
+					console.log(SelectedFile.type);
+					Name = document.getElementById('NameBox').value;
+					var Content = "<span id='NameArea'>Uploading " + SelectedFile.name + " as " + Name + "</span>";
+					Content += "<span id='Uploaded'> - <span id='MB'>0</span>/" + Math.round(SelectedFile.size / 1048576) + "MB</span> (<span id='percent'></span>)";
+					document.getElementById('UploadArea').innerHTML = Content;
+					fileReader.onload = function(event){
+						if(!event){
+							var data = fileReader.content;
+						} else {
+							var data = event.target.result;
+						}
+						socket.emit('Upload',{'Name' : Name, Data : data});
+					}
+					socket.emit('Start',{'Name':Name,'Size':SelectedFile.size});
+				} else {
+					alert("Please Select File");
+				}
+			}
+
+			socket.on('MoreData', function(data){
+				UpdateBar(data.Percent);
+				var Place = data.Place * 524288;
+				var NewFile='';
+
+				if(SelectedFile.webkitSlice)
+					NewFile=SelectedFile.webkitSlice(Place, Place + Math.min(524288, (SelectedFile.size-Place)));
+
+				else
+					NewFile = SelectedFile.slice(Place, Place + Math.min(524288, (SelectedFile.size-Place)));
+
+				fileReader.readAsBinaryString(NewFile);
+			});
+			
+			socket.on('fin', function(data){
+					location.href = '/';
+			});
+
+			function UpdateBar(percent){
+				document.getElementById('percent').innerHTML = (Math.round(percent*100)/100) + '%';
+				var MBDone = Math.round(((percent/100.0) * SelectedFile.size) / 1048576);
+				document.getElementById('MB').innerHTML = MBDone;
+			}
+
+			if (!FileReader.prototype.readAsBinaryString) {
+				FileReader.prototype.readAsBinaryString = function (fileData) {
+					var binary = "";
+					var pt = this;
+					var reader = new FileReader();
+
+					reader.onload = function (e) {
+						var bytes = new Uint8Array(reader.result);
+						var length = bytes.byteLength;
+
+						for (var i = 0; i < length; i++) {
+							binary += String.fromCharCode(bytes[i]);
+						}
+						//pt.result  - readonly so assign binary
+						pt.content = binary;
+						pt.onload();
+					}
+
+					reader.readAsArrayBuffer(fileData);
+				}
+			}
+		</script>
+  </body>
+</html>
