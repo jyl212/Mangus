@@ -37,7 +37,7 @@ public class RaspController {
             }
             System.out.println(""+sb.toString());  
             if(sb.toString().equals("재생")) {
-            	return "redirect:/p/play.do";
+            	return "redirect:/player/play.do";
             }
 		} catch (MalformedURLException e) {
 			e.printStackTrace();

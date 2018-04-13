@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+  <mapper namespace="springProject.music">
+ 	<insert id="insert" parameterType="music">
+ 	<![CDATA[
+ 		insert into music values(#{file_name}, #{genre}, #{artist}, #{id}, 0, 'F', #{title})
+ 	]]>
+ 	</insert>
+ 	
+ 	<select id="selectMusicList_T" resultType="music" parameterType="String">
+	 	<![CDATA[
+	 		select * from music where id=#{id} and list ='T'
+	 	]]>
+ 	</select>
+ 	
+    <select id="selectMusicList_F" resultType="music" parameterType="String">
+		<![CDATA[
+	 		select * from music where id=#{id}
+	 	]]>
+ 	</select>
+ 	
+ 	<select id="selectLikeMusic" resultType="music" parameterType="String">
+ 	<![CDATA[
+ 		SELECT * FROM (SELECT * FROM music WHERE id=#{id} ORDER BY count DESC) WHERE ROWNUM <= 5
+ 	]]>
+ 	</select>
+ 	
+ 	<update id="updateMusicList_T" parameterType="String">
+ 		<![CDATA[
+ 			update music set list='T' where id=#{id} and file_name = #{file_name}
+ 		]]>
+ 	</update>
+  	<update id="updateMusicList_F" parameterType="String">
+ 		<![CDATA[
+ 			update music set list='F' where id=#{id} and file_name = #{file_name}
+ 		]]>
+ 	</update>
+ 	<update id="updateCountMusic" parameterType="String">
+ 		<![CDATA[
+ 			update music set count=#{count}+1 where id=#{id} and file_name = #{file_name}
+ 		]]>
+ 	</update>
+ 	<select id="selectCountMusic" resultType="String" parameterType="String">
+		<![CDATA[
+	 		select count from music where id=#{id} and file_name = #{file_name}
+	 	]]>
+ 	</select>
+ 	
+ 	<delete id="delete" parameterType="String">
+ 		delete from music where id = #{id} and file_name = #{file_name}
+ 	</delete>
+	 	
+
+ </mapper>

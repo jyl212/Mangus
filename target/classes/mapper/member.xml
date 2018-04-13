@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="springProject.member">
+	<select id="check" resultType="member" parameterType="String">
+		select * from member where id=#{id}
+	</select>
+	<insert id="insert" parameterType="String">
+		insert into member values(#{id},#{pass},#{name},#{address},#{mail},#{phone},#{birth},#{gender},'ROLE_USER',#{encpass})
+	</insert>
+	<select id="login" resultType="member" parameterType="Map">
+		select * from member where id=#{id} and pass=#{pass}
+	</select>
+	<select id="securityLogin" resultType="map">
+		select id as username,encpass as password,pass,name,address,mail,phone,birth,gender,
+		       role as authority
+		       from member where id = #{username}
+	</select>
+</mapper>
