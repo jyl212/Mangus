@@ -1,0 +1,189 @@
+#!/usr/bin/env node
+
+/**
+ * Module dependencies.
+ */
+
+var app = require('../app');
+var debug = require('debug')('socketio:server');
+var http = require('http');
+var fs = require('fs');
+var mongodb = require('mongodb');
+var assert = require('assert');
+
+/**
+ * Get port from environment and store in Express.
+ */
+
+var port = normalizePort(process.env.PORT || '3000');
+app.set('port', port);
+
+/**
+ * Create HTTP server.
+ */
+
+var server = http.createServer(app);
+var io = require('socket.io')(server);
+var url = 'mongodb://localhost:27017/test';
+
+var Files = new Array();
+io.on('connection',function(socket){
+	socket.on('Start',function(data){
+		console.log('socket start!!');
+		console.log(data);
+		console.log(process.cwd());
+
+		var Name = data.Name;
+
+		Files[Name] = {
+			FileSize : data.Size,
+			Data : "",
+			Downloaded : 0
+		};
+
+		var Place = 0;
+
+		if (fs.existsSync('Temp/'+Name)){
+			var Stat = fs.statSync('Temp/'+Name);
+			if(Stat.isFile()){
+				Files[Name].Downloaded = Stat.size;
+				Place = Stat.size/524288;
+			}
+		}
+
+		fs.open("Temp/"+Name,"a+",function(err,fd){
+			if(err) console.log(err);
+			else {
+				Files[Name].Handler = fd;
+				socket.emit('MoreData',{'Place':Place,Percent : 0});
+			}
+		});
+
+	});
+
+	socket.on('Upload',function(data){
+		console.log(data);
+		var Name=data.Name;
+		Files[Name].Downloaded += data.Data.length;
+		Files[Name].Data += data.Data;
+		if(Files[Name].Downloaded == Files[Name].FileSize){        
+			fs.write(Files[Name].Handler, Files[Name].Data, null, 'Binary', function(err, written) {
+				if (err) console.error(err);
+								                 
+				/* GridFS writing stream */
+				mongodb.MongoClient.connect(url,function(err,db){
+					assert.ifError(err);
+
+					var bucket = new mongodb.GridFSBucket(db.db('test'));
+					
+					var readable = fs.createReadStream("Temp/" + Name);
+					var writeStream = bucket.openUploadStream(Name);
+
+					readable.pipe(writeStream);
+					writeStream.on('error', function(error){
+						assert.ifError(error);
+					});
+
+					writeStream.on('finish', function(file){
+						console.log(file.filename + " is written to DATABASE....");
+						
+						fs.close(Files[Name].Handler, function (err) { //Close fs module
+							if (err) console.error(err);
+							
+							fs.unlink("Temp/" + Name, function (err) { //This Deletes The Temporary File
+																                         //Moving File Completed
+								if (err) console.error(err);
+
+								console.log(Name + " is deleted.");
+								socket.emit('fin', 'fin');
+						  });
+						});
+					});
+				});
+			});
+		} else if(Files[Name].Data.length > 10485760){
+			fs.write(Files[Name].Handler, Files[Name].Data, null, 'Binary', function(err, written){
+				Files[Name].Data = ""; //Reset The Buffer
+				var Place = Files[Name].Downloaded / 524288;
+				var Percent = (Files[Name].Downloaded / Files[Name].FileSize) * 100;
+
+				socket.emit('MoreData', { 'Place' : Place, 'Percent' :  Percent});
+			});
+		} else {
+			var Place = Files[Name].Downloaded / 524288;
+			var Percent = (Files[Name].Downloaded / Files[Name].FileSize) * 100;
+
+			socket.emit('MoreData', { 'Place' : Place, 'Percent' :  Percent});
+		}
+	});
+
+
+});
+
+/**
+ * Listen on provided port, on all network interfaces.
+ */
+
+server.listen(port);
+server.on('error', onError);
+server.on('listening', onListening);
+
+/**
+ * Normalize a port into a number, string, or false.
+ */
+
+function normalizePort(val) {
+  var port = parseInt(val, 10);
+
+  if (isNaN(port)) {
+    // named pipe
+    return val;
+  }
+
+  if (port >= 0) {
+    // port number
+    return port;
+  }
+
+  return false;
+}
+
+/**
+ * Event listener for HTTP server "error" event.
+ */
+
+function onError(error) {
+  if (error.syscall !== 'listen') {
+    throw error;
+  }
+
+  var bind = typeof port === 'string'
+    ? 'Pipe ' + port
+    : 'Port ' + port;
+
+  // handle specific listen errors with friendly messages
+  switch (error.code) {
+    case 'EACCES':
+      console.error(bind + ' requires elevated privileges');
+      process.exit(1);
+      break;
+    case 'EADDRINUSE':
+      console.error(bind + ' is already in use');
+      process.exit(1);
+      break;
+    default:
+      throw error;
+  }
+}
+
+/**
+ * Event listener for HTTP server "listening" event.
+ */
+
+function onListening() {
+  var addr = server.address();
+  var bind = typeof addr === 'string'
+    ? 'pipe ' + addr
+    : 'port ' + addr.port;
+  debug('Listening on ' + bind);
+}
