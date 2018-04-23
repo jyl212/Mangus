@@ -36,7 +36,7 @@
         <li><a href="/springProject/music/index.do?id=${user.id}">음악</a></li>
         <li><a href="/springProject/traffic/index.do">교통</a></li>
         <li><a href="/springProject/search/index.do?gender=${user.gender}&birth=${user.birth}">검색</a></li>
-        <li><a href="/springProject/result.do">test</a></li>
+        <li><a href="/springProject/result.do">음성인식</a></li>
         <li class=" dropdown">
             <a href="#" class="dropdown-toggle " data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">메일<span class="caret"></span></a>
             <ul class="dropdown-menu">
